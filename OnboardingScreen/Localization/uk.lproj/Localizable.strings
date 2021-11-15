@@ -1,0 +1,118 @@
+/* 
+ Localizable.strings
+ romanova
+ 
+ Created by Roman Fedotov on 29.08.2021.
+ 
+ */
+"screen.onboarding.page_two.title" = "Слухай, думай, застосовуй";
+
+"screen.onboarding.page_one.title" = "Твоя бізнес-допомога тут!";
+
+"screen.onboarding.page.button.to_next_page" = "Далі";
+
+"screen.onboarding.page.button.to_main_screen" = "Почати";
+
+"screen.onboarding.page.button.skip_to_main" = "Пропустити";
+
+"screen.main.about_author.text.top_view_title" = "Про мене та подкаст";
+
+"screen.main.playlist.title" = "Про системне мислення в бізнесі та управління проектами";
+
+"screen.main.about_author.text.author_name" = "Віра Романова";
+
+"screen.main.now_playing.title" = "Ви зараз слухаєте";
+
+"screen.main.alert.title" = "Увага";
+
+"screen.main.alert.description" = "З'єднання з інтернетом відсутнє";
+
+"screen.main.alert.text.button" = "Перевірте з'єднання";
+
+"screen.player.top_bar_title" = "Ви зараз слухаєте";
+
+"screen.player.text.author_name" = "Про що цей випуск?";
+
+"screen.about_author.top_bar_title" = "Про мене і подкаст";
+
+"screen.about_author.text.author_name" = "Віра Романова";
+
+"screen.about_author.text.job_label" = "Психолог-консультант, тренер особистісного зростання";
+
+"screen.about_author.text.about_author" = "Засновник і CEO компанії Your Personal Growth Hacker (напрям діяльності – кризові консультації власників бізнесу, топ-менеджерів і команд.)\n\nЕксперт по розробці та впровадженню управлінських інновацій в бізнесі, стартапах, кандидат психологічних наук, практикуючий психолог, викладач факультету психології КНУ імені Тараса Григоровича Шевченка і лектор авторського курсу в Стенфорді.\n\nСпівзасновник онлайн платформи аналізу потреб клієнта для підбору провірених та професійних психологів, психотерапевтів, коучів, менторів та консультантів під особистий запит. Спікер профільних конференцій у сфері маркетингу, HR та IT, експерт на радіо та телебаченні. \n\n17 років досвіду директором з персоналу у великих компаніях від банкової сфери до виробництва, а також бізнес-тренером і консультантом перших осіб, зокрема чинного міського голови Амстердаму. В 2015 році була представником України в ПРООН з питань людей у складних життєвих ситуаціях. \n\nСпівпраця: експерт телеканалів ICTV, СТБ, 1+1, «Інтер», «Україна». Ведуча та психолог першого сезону реаліті-шоу про стосунки «Екси» на «Новому каналі». \n\nПроєкти та компанії, з якими співпрацювала: Slack, Amazon, Google, Chatfuel, IKEA, Marvel, DC, KPMG-Ukraine ltd, IMG Partners, EPAM Systems, GlobalLogic, «Приватбанк», «Roshen», Multiplex, «Київенерго», «Нафтогаз України», «Інтерпайп», ТМ «Олейна», «Оболонь», «Рогань», Lifecell, Київстар, COMFY, Fozzy Group, Mars, EVA, Watsons, British American Tobacco, Philip Morris International, Nemiroff, «Мізол», the MakeApp, посольство Канади, посольство Ізраїлю.";
+
+"screen.sign_in.title" = "Вхід";
+
+"screen.sign_in.email_view.text" = "E-mail";
+
+"screen.sign_in.password_view.text" = "Пароль";
+
+"screen.sign_in.password_view.forgot_label.text" = "Забули?";
+
+"screen.sign_in.button.text" = "Увійти";
+
+"screen.sign_in.new_user_label" = "Новий користувач?";
+
+"screen.sign_in.sign_up_label" = "Зареєструйтеся";
+
+"screen.sign_in.skip_label" = "Пропустити авторизацію";
+
+"screen.sign_up.title" = "Реєстрація";
+
+"screen.sign_up.email_view.text" = "E-mail";
+
+"screen.sign_up.password_view.text" = "Пароль";
+
+"screen.sign_up.button.text" = "Зареєструватися";
+
+"screen.sign_up.new_user_label" = "Новий користувач?";
+
+"screen.sign_up.sign_in_label" = "Увійдіть";
+
+"screen.forgot_password_email.title" = "Відновлення паролю";
+
+"screen.forgot_password_email.email_view.text" = "E-mail";
+
+"screen.forgot_password_email.button.text" = "Відновити";
+
+"screen.back_to_sign_in.title" = "Успіх!";
+
+"screen.back_to_sign_in.description_label" = "Юху! Все вдалося! Перевірте пошту";
+
+"screen.back_to_sign_in.email_button.text" = "Увійти за допомогою email";
+
+"screen.methods.title" = "Вхід";
+
+"screen.methods.apple_button.text" = "Увійти за допомогою Apple";
+
+"screen.methods.google_button.text" = "Увійти за допомогою Google";
+
+"screen.methods.email_button.text" = "Увійти за допомогою email";
+
+"screen.methods.new_user_label" = "Новий користувач?";
+
+"screen.methods.sign_up_label" = "Зареєструйтеся";
+
+"screen.methods.skip_label" = "Пропустити авторизацію";
+
+"screen.comments.title" = "Коментарі до випуску";
+
+"screen.comments.send_button.text" = "Відправити";
+
+"screen.comments.text_field_placeholder.text" = "Коментар...";
+
+"case.exception_label" = "Щось пішло не так";
+
+"case.incorrect_fill_label" = "Заповніть усі поля";
+
+"case.incorrect_password_label" = "Невірний пароль або email";
+
+"case.incorrect_email_label" = "Невірний email";
+
+"case.short_password_label" = "Надто короткий пароль";
+
+"case.warning_label" = "Ви хочете вийти?";
+
+"case.agreement_label" = "Так";
+
+"case.deny_label" = "Відміна";
