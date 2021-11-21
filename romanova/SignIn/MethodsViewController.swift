@@ -23,7 +23,7 @@ class MethodsViewController: UIViewController, ASAuthorizationControllerDelegate
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }
-
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var screenTitle: UILabel!
@@ -36,6 +36,10 @@ class MethodsViewController: UIViewController, ASAuthorizationControllerDelegate
     @IBOutlet weak var newUserLabel: UILabel!
     @IBOutlet weak var moveToSignUpLabel: UILabel!
     @IBOutlet weak var forgotPasswordLabel: UILabel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        showAlert()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +60,8 @@ class MethodsViewController: UIViewController, ASAuthorizationControllerDelegate
         forgotPasswordLabel.font = .rounded(ofSize: 14, weight: .medium)
         forgotPasswordLabel.text = NSLocalizedString("screen.methods.skip_label", comment: "")
     }
+    
+    // MARK: - Funcs
     
     func setupLabelTap() {
         let toSignUpTap = UITapGestureRecognizer(target: self, action: #selector(self.toSignUpGesture(_:)))
@@ -205,6 +211,32 @@ class MethodsViewController: UIViewController, ASAuthorizationControllerDelegate
         }.joined()
         
         return hashString
+    }
+    
+    func showAlert() {
+        if !isInternetAvailable() {
+            let alert = UIAlertController(title: NSLocalizedString("case.exception_label", comment: ""), message: NSLocalizedString("screen.main.alert.description", comment: ""), preferredStyle: .alert)
+            let action = UIAlertAction(title: NSLocalizedString("screen.main.alert.text.button", comment: ""), style: .default, handler: { action in
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                    })
+                }
+            })
+            alert.addAction(action)
+            let screenSize: CGRect = UIScreen.main.bounds
+            let screenWidth = screenSize.width
+            let screenHeight = screenSize.height
+            let layer = CALayer()
+            layer.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
+            layer.backgroundColor = UIColor.white.cgColor
+            view.layer.addSublayer(layer)
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     // MARK: - IBActions

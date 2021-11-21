@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class OnboardingViewController: UIViewController {
     
     // MARK: - IBOutlets
     
@@ -42,6 +42,8 @@ class ViewController: UIViewController {
         skipButton.setTitle(NSLocalizedString("screen.onboarding.page.button.skip_to_main", comment: ""), for: .normal)
         skipButton.titleLabel?.font = .rounded(ofSize: 14, weight: .regular)
     }
+    
+    // MARK: - Funcs
     
     func collectionViewShadow() {
         collectionView.layer.borderWidth = 1.0
@@ -87,7 +89,7 @@ class ViewController: UIViewController {
 
 // MARK: - Extensions
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return slides.count
     }

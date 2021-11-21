@@ -38,6 +38,7 @@ class MainViewController: UIViewController {
         if player?.isPlaying == true {
             playButton.setImage(UIImage(named: "pause"), for: .normal)
         }
+        createSpinnerView()
     }
     
     override func viewDidLoad() {
@@ -67,6 +68,8 @@ class MainViewController: UIViewController {
         podcastCollectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
     }
     
+    // MARK: - Funcs
+    
     @objc func didGetNotification(_ notification: Notification) {
         let model = notification.object as? PodcastModel?
         if model != nil {
@@ -95,7 +98,7 @@ class MainViewController: UIViewController {
     }
     
     private func fetchPodcasts(retryCount: Int = 3) {
-        let urlString = "https://api-v2.soundcloud.com/playlists/1310117251?\(clientId)"
+        let urlString = "https://api-v2.soundcloud.com/playlists/1350894694?\(clientId)"
         
         networkService.getTracks(urlString: urlString) { (result) in
             switch result {
@@ -172,7 +175,15 @@ class MainViewController: UIViewController {
         if !isInternetAvailable() {
             let alert = UIAlertController(title: NSLocalizedString("case.exception_label", comment: ""), message: NSLocalizedString("screen.main.alert.description", comment: ""), preferredStyle: .alert)
             let action = UIAlertAction(title: NSLocalizedString("screen.main.alert.text.button", comment: ""), style: .default, handler: { action in
-                exit(0)
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                    })
+                }
             })
             alert.addAction(action)
             let screenSize: CGRect = UIScreen.main.bounds
@@ -211,7 +222,6 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        createSpinnerView()
         showAlert()
         return podcasts.count
     }

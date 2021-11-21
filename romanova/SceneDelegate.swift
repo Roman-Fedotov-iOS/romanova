@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             controller = storyboard.instantiateViewController(identifier: "MethodsVC")
         } else {
-            controller = ViewController.instantiate()
+            controller = OnboardingViewController.instantiate()
         }
         
         if UserDefaults.standard.hasSignedIn {

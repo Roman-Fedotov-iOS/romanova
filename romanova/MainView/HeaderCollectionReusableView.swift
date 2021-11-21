@@ -8,8 +8,10 @@
 import UIKit
 
 class HeaderCollectionReusableView: UICollectionReusableView {
-        static let identifier = "HeaderCollectionReusableView"
     
+    // MARK: - Properties
+    
+    static let identifier = "HeaderCollectionReusableView"
     private let label: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("screen.main.playlist.title", comment: "")
@@ -18,6 +20,8 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         label.numberOfLines = 3
         return label
     }()
+    
+    // MARK: - Funcs
     
     public func configure() {
         backgroundColor = .white

@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Onboarding View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="romanova" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingViewController" id="BYZ-38-t0r" customClass="OnboardingViewController" customModule="romanova" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -548,6 +548,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2TP-Ua-zrA">
                                 <rect key="frame" x="47" y="513" width="296" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="296" id="tly-Gi-NyF"/>
+                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="googleButton"/>
                                 <connections>
@@ -556,6 +559,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfF-4K-MEi">
                                 <rect key="frame" x="47" y="578" width="296" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="296" id="oX0-GT-ISw"/>
+                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="emailButton"/>
                                 <connections>
@@ -564,6 +570,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wod-su-goz">
                                 <rect key="frame" x="47" y="448" width="296" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="296" id="zUd-Y6-zeF"/>
+                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="appleButton"/>
                                 <connections>
@@ -588,18 +597,18 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Увійти за допомогою Apple" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfo-lh-rDZ">
-                                <rect key="frame" x="121.99999999999999" y="462" width="195.66666666666663" height="17"/>
+                                <rect key="frame" x="117.33333333333333" y="462" width="195.66666666666669" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Увійти за допомогою Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yN4-NA-uKa">
-                                <rect key="frame" x="122" y="527" width="204" height="17"/>
+                                <rect key="frame" x="114" y="527" width="204" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Увійти за допомогою email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ei2-R2-ygX">
-                                <rect key="frame" x="122.00000000000001" y="592" width="192.33333333333337" height="17"/>
+                                <rect key="frame" x="120.66666666666667" y="592" width="192.33333333333331" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -632,16 +641,16 @@
                             <constraint firstItem="yN4-NA-uKa" firstAttribute="top" secondItem="2TP-Ua-zrA" secondAttribute="top" constant="14" id="VMI-RI-hpH"/>
                             <constraint firstItem="dfF-4K-MEi" firstAttribute="centerX" secondItem="EY5-s4-ouv" secondAttribute="centerX" id="VoG-et-oHs"/>
                             <constraint firstItem="yN4-NA-uKa" firstAttribute="centerY" secondItem="2TP-Ua-zrA" secondAttribute="centerY" id="bun-9O-aSX"/>
+                            <constraint firstItem="2TP-Ua-zrA" firstAttribute="trailing" secondItem="yN4-NA-uKa" secondAttribute="trailing" constant="25" id="e3N-ft-1GS"/>
                             <constraint firstItem="Ei2-R2-ygX" firstAttribute="top" secondItem="dfF-4K-MEi" secondAttribute="top" constant="14" id="f77-Pn-jw6"/>
                             <constraint firstItem="Ei2-R2-ygX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dfF-4K-MEi" secondAttribute="leading" id="gID-Gi-w7r"/>
                             <constraint firstItem="EY5-s4-ouv" firstAttribute="trailing" secondItem="LWy-GY-e5o" secondAttribute="trailing" constant="40" id="iTP-ym-tzX"/>
-                            <constraint firstItem="EY5-s4-ouv" firstAttribute="trailing" secondItem="Ei2-R2-ygX" secondAttribute="trailing" constant="75.666666666666629" id="ktd-AQ-8iF"/>
-                            <constraint firstItem="EY5-s4-ouv" firstAttribute="trailing" secondItem="Mfo-lh-rDZ" secondAttribute="trailing" constant="72.333333333333371" id="lVp-Yi-h5L"/>
+                            <constraint firstItem="dfF-4K-MEi" firstAttribute="trailing" secondItem="Ei2-R2-ygX" secondAttribute="trailing" constant="30" id="ktd-AQ-8iF"/>
+                            <constraint firstItem="Wod-su-goz" firstAttribute="trailing" secondItem="Mfo-lh-rDZ" secondAttribute="trailing" constant="30" id="lVp-Yi-h5L"/>
                             <constraint firstItem="Br8-Wc-NUk" firstAttribute="leading" secondItem="EY5-s4-ouv" secondAttribute="leading" constant="40" id="n3H-ih-2Or"/>
                             <constraint firstItem="Mfo-lh-rDZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Wod-su-goz" secondAttribute="leading" id="nhB-De-WB4"/>
                             <constraint firstItem="Mfo-lh-rDZ" firstAttribute="centerY" secondItem="Wod-su-goz" secondAttribute="centerY" id="o7m-VD-5KH"/>
                             <constraint firstItem="Wod-su-goz" firstAttribute="centerX" secondItem="EY5-s4-ouv" secondAttribute="centerX" id="oS6-aU-UgC"/>
-                            <constraint firstItem="EY5-s4-ouv" firstAttribute="trailing" secondItem="yN4-NA-uKa" secondAttribute="trailing" constant="64" id="og8-R8-T9b"/>
                             <constraint firstItem="EY5-s4-ouv" firstAttribute="trailing" secondItem="Br8-Wc-NUk" secondAttribute="trailing" constant="40" id="vv4-5K-1F3"/>
                             <constraint firstItem="LWy-GY-e5o" firstAttribute="top" secondItem="e9k-QI-RHQ" secondAttribute="bottom" constant="20" id="w7f-8d-iVG"/>
                             <constraint firstItem="Br8-Wc-NUk" firstAttribute="top" secondItem="EY5-s4-ouv" secondAttribute="top" id="weQ-D0-0dy"/>

@@ -8,7 +8,7 @@
 import UIKit
 
 class NetworkService {
-    let urlString = "https://api-v2.soundcloud.com/playlists/1310117251?\(clientId)"
+    let urlString = "https://api-v2.soundcloud.com/playlists/1350894694?\(clientId)"
     
     func getTracks(urlString: String, completion: @escaping (Result<PlaylistResponse, Error>) -> Void) {
         guard let url = URL(string: urlString) else { return }

@@ -9,7 +9,7 @@ import UIKit
 import FirebaseFirestore
 
 class EditTableViewCell: UITableViewCell {
-
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var timeLabel: UILabel!
@@ -27,10 +27,10 @@ class EditTableViewCell: UITableViewCell {
         let hour = calendar.component(.hour, from: date)
         timeLabel.isHidden = true
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
     }
-
+    
 }

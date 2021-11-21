@@ -13,14 +13,14 @@
 		B11C3CF12737F01700B6AAA8 /* Date +.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11C3CF02737F01700B6AAA8 /* Date +.swift */; };
 		B11DF90626D11C7900FD8D10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11DF90526D11C7900FD8D10 /* AppDelegate.swift */; };
 		B11DF90826D11C7900FD8D10 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11DF90726D11C7900FD8D10 /* SceneDelegate.swift */; };
-		B11DF90A26D11C7900FD8D10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11DF90926D11C7900FD8D10 /* ViewController.swift */; };
-		B11DF90D26D11C7900FD8D10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B11DF90B26D11C7900FD8D10 /* Main.storyboard */; };
+		B11DF90A26D11C7900FD8D10 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11DF90926D11C7900FD8D10 /* OnboardingViewController.swift */; };
 		B11DF90F26D11C7A00FD8D10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B11DF90E26D11C7A00FD8D10 /* Assets.xcassets */; };
 		B12698FC26D78E8100880CF4 /* String +.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12698FB26D78E8100880CF4 /* String +.swift */; };
 		B1273B3526E141CD008237EE /* WaveFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1273B3426E141CD008237EE /* WaveFormView.swift */; };
 		B1273B3826E1529A008237EE /* Types +.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1273B3726E1529A008237EE /* Types +.swift */; };
 		B1299EC126D8DF040034D1CD /* ViewController +.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1299EC026D8DF040034D1CD /* ViewController +.swift */; };
 		B1299EC326D8E0B40034D1CD /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1299EC226D8E0B40034D1CD /* UserDefaults+.swift */; };
+		B12C36ED27465F9F00ED5FB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B12C36EB27465F9F00ED5FB2 /* Main.storyboard */; };
 		B12D600926E516480026A7E9 /* AVPlayer +.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12D600826E516480026A7E9 /* AVPlayer +.swift */; };
 		B14CA0F727026E5E00E8A512 /* StreamUrlResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CA0F627026E5E00E8A512 /* StreamUrlResponse.swift */; };
 		B14CA0F927026FA400E8A512 /* PodcastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14CA0F827026FA400E8A512 /* PodcastModel.swift */; };
@@ -34,6 +34,7 @@
 		B1A0F72426FFB8B700BF4B94 /* StreamUrlRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A0F72326FFB8B700BF4B94 /* StreamUrlRequest.swift */; };
 		B1A7CC9826D1390B00A7D20B /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A7CC9726D1390B00A7D20B /* OnboardingCollectionViewCell.swift */; };
 		B1A7CC9A26D13A1400A7D20B /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A7CC9926D13A1400A7D20B /* OnboardingSlide.swift */; };
+		B1ADB5C22749378200547E02 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1ADB5C12749378200547E02 /* Auth.storyboard */; };
 		B1B15B0026D64B20007A679B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B15AFF26D64B20007A679B /* MainViewController.swift */; };
 		B1BBE9DB26E3770100CBC09D /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BBE9DA26E3770100CBC09D /* InternetConnection.swift */; };
 		B1BBE9DD26E37ED300CBC09D /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BBE9DC26E37ED300CBC09D /* ImageDownloader.swift */; };
@@ -56,53 +57,54 @@
 /* Begin PBXFileReference section */
 		57E93B345887562B9B9A01A6 /* Pods-romanova.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-romanova.release.xcconfig"; path = "Target Support Files/Pods-romanova/Pods-romanova.release.xcconfig"; sourceTree = "<group>"; };
 		ACCF9515FB6AF029834BD284 /* Pods-romanova.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-romanova.debug.xcconfig"; path = "Target Support Files/Pods-romanova/Pods-romanova.debug.xcconfig"; sourceTree = "<group>"; };
-		B10E855526D7BFED008A9C6F /* UIView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView +.swift"; path = "OnboardingScreen/Extensions/UIView +.swift"; sourceTree = SOURCE_ROOT; };
+		B10E855526D7BFED008A9C6F /* UIView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView +.swift"; path = "romanova/Extensions/UIView +.swift"; sourceTree = SOURCE_ROOT; };
 		B1111B8E26D40DC400E9F9E6 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		B114E3C326D983060067FA2A /* RequestFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestFunc.swift; path = OnboardingScreen/Networking/RequestFunc.swift; sourceTree = SOURCE_ROOT; };
-		B11C3CF02737F01700B6AAA8 /* Date +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date +.swift"; path = "OnboardingScreen/Extensions/Date +.swift"; sourceTree = SOURCE_ROOT; };
+		B114E3C326D983060067FA2A /* RequestFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestFunc.swift; path = romanova/Networking/RequestFunc.swift; sourceTree = SOURCE_ROOT; };
+		B11C3CF02737F01700B6AAA8 /* Date +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date +.swift"; path = "romanova/Extensions/Date +.swift"; sourceTree = SOURCE_ROOT; };
 		B11DF90226D11C7900FD8D10 /* romanova.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = romanova.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B11DF90526D11C7900FD8D10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B11DF90726D11C7900FD8D10 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B11DF90926D11C7900FD8D10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B11DF90926D11C7900FD8D10 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		B11DF90E26D11C7A00FD8D10 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B11DF91326D11C7A00FD8D10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B12507F326DCF96F00F10B2C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ../OnboardingScreen/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B12507F526DCFAA900F10B2C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
-		B12698FB26D78E8100880CF4 /* String +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String +.swift"; path = "OnboardingScreen/Extensions/String +.swift"; sourceTree = SOURCE_ROOT; };
-		B1273B3426E141CD008237EE /* WaveFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WaveFormView.swift; path = OnBoardingScreen/CustomViews/WaveFormView.swift; sourceTree = SOURCE_ROOT; };
-		B1273B3726E1529A008237EE /* Types +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Types +.swift"; path = "OnboardingScreen/Extensions/Types +.swift"; sourceTree = SOURCE_ROOT; };
-		B1299EC026D8DF040034D1CD /* ViewController +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ViewController +.swift"; path = "OnboardingScreen/Extensions/ViewController +.swift"; sourceTree = SOURCE_ROOT; };
-		B1299EC226D8E0B40034D1CD /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserDefaults+.swift"; path = "OnboardingScreen/Extensions/UserDefaults+.swift"; sourceTree = SOURCE_ROOT; };
-		B12D600826E516480026A7E9 /* AVPlayer +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AVPlayer +.swift"; path = "OnboardingScreen/Extensions/AVPlayer +.swift"; sourceTree = SOURCE_ROOT; };
-		B14CA0F627026E5E00E8A512 /* StreamUrlResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StreamUrlResponse.swift; path = OnBoardingScreen/Model/StreamUrlResponse.swift; sourceTree = SOURCE_ROOT; };
-		B14CA0F827026FA400E8A512 /* PodcastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PodcastModel.swift; path = OnboardingScreen/Model/PodcastModel.swift; sourceTree = SOURCE_ROOT; };
-		B14FBEC426DE260B0064F201 /* UIFont +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIFont +.swift"; path = "OnboardingScreen/Extensions/UIFont +.swift"; sourceTree = SOURCE_ROOT; };
-		B154AA5026D690930000DBBA /* PodcastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PodcastCollectionViewCell.swift; path = OnboardingScreen/MainView/PodcastCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
-		B154AA5126D690930000DBBA /* PodcastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PodcastCollectionViewCell.xib; path = OnboardingScreen/MainView/PodcastCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
-		B16B097527183038008B57FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "OnboardingScreen/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		B17DEF192709FACF003E525F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "OnboardingScreen/Launch Screen.storyboard"; sourceTree = SOURCE_ROOT; };
+		B12698FB26D78E8100880CF4 /* String +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String +.swift"; path = "romanova/Extensions/String +.swift"; sourceTree = SOURCE_ROOT; };
+		B1273B3426E141CD008237EE /* WaveFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WaveFormView.swift; path = romanova/CustomViews/WaveFormView.swift; sourceTree = SOURCE_ROOT; };
+		B1273B3726E1529A008237EE /* Types +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Types +.swift"; path = "romanova/Extensions/Types +.swift"; sourceTree = SOURCE_ROOT; };
+		B1299EC026D8DF040034D1CD /* ViewController +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ViewController +.swift"; path = "romanova/Extensions/ViewController +.swift"; sourceTree = SOURCE_ROOT; };
+		B1299EC226D8E0B40034D1CD /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UserDefaults+.swift"; path = "romanova/Extensions/UserDefaults+.swift"; sourceTree = SOURCE_ROOT; };
+		B12C36EC27465F9F00ED5FB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B12D600826E516480026A7E9 /* AVPlayer +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AVPlayer +.swift"; path = "romanova/Extensions/AVPlayer +.swift"; sourceTree = SOURCE_ROOT; };
+		B14CA0F627026E5E00E8A512 /* StreamUrlResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StreamUrlResponse.swift; path = romanova/Model/StreamUrlResponse.swift; sourceTree = SOURCE_ROOT; };
+		B14CA0F827026FA400E8A512 /* PodcastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PodcastModel.swift; path = romanova/Model/PodcastModel.swift; sourceTree = SOURCE_ROOT; };
+		B14FBEC426DE260B0064F201 /* UIFont +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIFont +.swift"; path = "romanova/Extensions/UIFont +.swift"; sourceTree = SOURCE_ROOT; };
+		B154AA5026D690930000DBBA /* PodcastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PodcastCollectionViewCell.swift; path = romanova/MainView/PodcastCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		B154AA5126D690930000DBBA /* PodcastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PodcastCollectionViewCell.xib; path = romanova/MainView/PodcastCollectionViewCell.xib; sourceTree = SOURCE_ROOT; };
+		B16B097527183038008B57FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "romanova/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B17DEF192709FACF003E525F /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "romanova/Launch Screen.storyboard"; sourceTree = SOURCE_ROOT; };
 		B1902A1E2738242C00C2AEF5 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		B1902A202738451A00C2AEF5 /* EditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewCell.swift; sourceTree = "<group>"; };
-		B1A0F72326FFB8B700BF4B94 /* StreamUrlRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StreamUrlRequest.swift; path = OnboardingScreen/Networking/StreamUrlRequest.swift; sourceTree = SOURCE_ROOT; };
+		B1A0F72326FFB8B700BF4B94 /* StreamUrlRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StreamUrlRequest.swift; path = romanova/Networking/StreamUrlRequest.swift; sourceTree = SOURCE_ROOT; };
 		B1A7CC9726D1390B00A7D20B /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		B1A7CC9926D13A1400A7D20B /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 		B1AB018F26FE3D5900CDDE59 /* romanova.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = romanova.entitlements; sourceTree = "<group>"; };
+		B1ADB5C12749378200547E02 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		B1B15AFF26D64B20007A679B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		B1BBE9DA26E3770100CBC09D /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InternetConnection.swift; path = OnboardingScreen/Networking/InternetConnection.swift; sourceTree = SOURCE_ROOT; };
-		B1BBE9DC26E37ED300CBC09D /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = OnboardingScreen/CustomViews/ImageDownloader.swift; sourceTree = SOURCE_ROOT; };
-		B1BBE9DE26E3890100CBC09D /* WaveformDataProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WaveformDataProcessor.swift; path = OnboardingScreen/CustomViews/WaveformDataProcessor.swift; sourceTree = SOURCE_ROOT; };
-		B1BED430271F547A008D8670 /* MethodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MethodsViewController.swift; path = OnboardingScreen/SignIn/MethodsViewController.swift; sourceTree = SOURCE_ROOT; };
-		B1C095E126D9632300C5126F /* TracksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TracksModel.swift; path = OnBoardingScreen/Model/TracksModel.swift; sourceTree = SOURCE_ROOT; };
+		B1BBE9DA26E3770100CBC09D /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InternetConnection.swift; path = romanova/Networking/InternetConnection.swift; sourceTree = SOURCE_ROOT; };
+		B1BBE9DC26E37ED300CBC09D /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = romanova/CustomViews/ImageDownloader.swift; sourceTree = SOURCE_ROOT; };
+		B1BBE9DE26E3890100CBC09D /* WaveformDataProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WaveformDataProcessor.swift; path = romanova/CustomViews/WaveformDataProcessor.swift; sourceTree = SOURCE_ROOT; };
+		B1BED430271F547A008D8670 /* MethodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MethodsViewController.swift; path = romanova/SignIn/MethodsViewController.swift; sourceTree = SOURCE_ROOT; };
+		B1C095E126D9632300C5126F /* TracksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TracksModel.swift; path = romanova/Model/TracksModel.swift; sourceTree = SOURCE_ROOT; };
 		B1CC6EF326DBA22D00A13DFB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		B1D2887E26D80C7100515B9C /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayerViewController.swift; path = OnboardingScreen/PlayerView/PlayerViewController.swift; sourceTree = SOURCE_ROOT; };
-		B1D301DC27176AB100CC3643 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = OnboardingScreen/SignIn/SignInViewController.swift; sourceTree = SOURCE_ROOT; };
-		B1D301DE27176AE200CC3643 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = OnboardingScreen/SignIn/SignUpViewController.swift; sourceTree = SOURCE_ROOT; };
-		B1D301E027176B1A00CC3643 /* ForgotPasswordEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ForgotPasswordEmailViewController.swift; path = OnboardingScreen/SignIn/ForgotPasswordEmailViewController.swift; sourceTree = SOURCE_ROOT; };
-		B1D301E427176B6B00CC3643 /* BackToSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BackToSignInViewController.swift; path = OnboardingScreen/SignIn/BackToSignInViewController.swift; sourceTree = SOURCE_ROOT; };
+		B1D2887E26D80C7100515B9C /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayerViewController.swift; path = romanova/PlayerView/PlayerViewController.swift; sourceTree = SOURCE_ROOT; };
+		B1D301DC27176AB100CC3643 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = romanova/SignIn/SignInViewController.swift; sourceTree = SOURCE_ROOT; };
+		B1D301DE27176AE200CC3643 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = romanova/SignIn/SignUpViewController.swift; sourceTree = SOURCE_ROOT; };
+		B1D301E027176B1A00CC3643 /* ForgotPasswordEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ForgotPasswordEmailViewController.swift; path = romanova/SignIn/ForgotPasswordEmailViewController.swift; sourceTree = SOURCE_ROOT; };
+		B1D301E427176B6B00CC3643 /* BackToSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BackToSignInViewController.swift; path = romanova/SignIn/BackToSignInViewController.swift; sourceTree = SOURCE_ROOT; };
 		B1DCA220270A353C003FD87C /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
-		B1EAA40026F7464400F1D13F /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Duration.swift; path = OnboardingScreen/Model/Duration.swift; sourceTree = SOURCE_ROOT; };
-		B1EDFA0326E27F42005561E6 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpinnerViewController.swift; path = OnboardingScreen/CustomViews/SpinnerViewController.swift; sourceTree = SOURCE_ROOT; };
-		B1F8AFC0272963A200B74235 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeaderCollectionReusableView.swift; path = OnboardingScreen/MainView/HeaderCollectionReusableView.swift; sourceTree = SOURCE_ROOT; };
+		B1EAA40026F7464400F1D13F /* Duration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Duration.swift; path = romanova/Model/Duration.swift; sourceTree = SOURCE_ROOT; };
+		B1EDFA0326E27F42005561E6 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpinnerViewController.swift; path = romanova/CustomViews/SpinnerViewController.swift; sourceTree = SOURCE_ROOT; };
+		B1F8AFC0272963A200B74235 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HeaderCollectionReusableView.swift; path = romanova/MainView/HeaderCollectionReusableView.swift; sourceTree = SOURCE_ROOT; };
 		BC2FD2636CB6D978092F36A8 /* Pods_romanova.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_romanova.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -148,8 +150,7 @@
 		B1111B8D26D40D7B00E9F9E6 /* OnboardingView */ = {
 			isa = PBXGroup;
 			children = (
-				B11DF90926D11C7900FD8D10 /* ViewController.swift */,
-				B1A7CC9926D13A1400A7D20B /* OnboardingSlide.swift */,
+				B11DF90926D11C7900FD8D10 /* OnboardingViewController.swift */,
 				B1A7CC9726D1390B00A7D20B /* OnboardingCollectionViewCell.swift */,
 			);
 			path = OnboardingView;
@@ -159,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				B1AB018F26FE3D5900CDDE59 /* romanova.entitlements */,
-				B11DF90426D11C7900FD8D10 /* OnboardingScreen */,
+				B11DF90426D11C7900FD8D10 /* romanova */,
 				B11DF90326D11C7900FD8D10 /* Products */,
 				4E8D787B637FE75ED662E1ED /* Pods */,
 				6547B6F739E894315CEEEF8C /* Frameworks */,
@@ -174,9 +175,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B11DF90426D11C7900FD8D10 /* OnboardingScreen */ = {
+		B11DF90426D11C7900FD8D10 /* romanova */ = {
 			isa = PBXGroup;
 			children = (
+				B11DF90526D11C7900FD8D10 /* AppDelegate.swift */,
+				B11DF90726D11C7900FD8D10 /* SceneDelegate.swift */,
+				B17DEF192709FACF003E525F /* Launch Screen.storyboard */,
+				B1ADB5C02749373E00547E02 /* Storyboards */,
 				B1902A1D2738241600C2AEF5 /* Comments */,
 				B1D301DB27176A9B00CC3643 /* SignIn */,
 				B1EAA3FF26F7463500F1D13F /* Model */,
@@ -188,15 +193,11 @@
 				B1B15AFE26D64B0B007A679B /* MainView */,
 				B1111B8D26D40D7B00E9F9E6 /* OnboardingView */,
 				B1111B8C26D40D6F00E9F9E6 /* AboutView */,
-				B11DF90526D11C7900FD8D10 /* AppDelegate.swift */,
-				B11DF90726D11C7900FD8D10 /* SceneDelegate.swift */,
-				B17DEF192709FACF003E525F /* Launch Screen.storyboard */,
-				B11DF90B26D11C7900FD8D10 /* Main.storyboard */,
 				B11DF90E26D11C7A00FD8D10 /* Assets.xcassets */,
 				B11DF91326D11C7A00FD8D10 /* Info.plist */,
 				B16B097527183038008B57FD /* GoogleService-Info.plist */,
 			);
-			path = OnboardingScreen;
+			path = romanova;
 			sourceTree = "<group>";
 		};
 		B12698FA26D78E6D00880CF4 /* Extensions */ = {
@@ -244,6 +245,15 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		B1ADB5C02749373E00547E02 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B12C36EB27465F9F00ED5FB2 /* Main.storyboard */,
+				B1ADB5C12749378200547E02 /* Auth.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		B1B15AFE26D64B0B007A679B /* MainView */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +296,7 @@
 		B1EAA3FF26F7463500F1D13F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B1A7CC9926D13A1400A7D20B /* OnboardingSlide.swift */,
 				B14CA0F627026E5E00E8A512 /* StreamUrlResponse.swift */,
 				B1C095E126D9632300C5126F /* TracksModel.swift */,
 				B1EAA40026F7464400F1D13F /* Duration.swift */,
@@ -354,12 +365,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B12C36ED27465F9F00ED5FB2 /* Main.storyboard in Resources */,
 				B1CC6EF226DBA22D00A13DFB /* Localizable.strings in Resources */,
 				B11DF90F26D11C7A00FD8D10 /* Assets.xcassets in Resources */,
-				B11DF90D26D11C7900FD8D10 /* Main.storyboard in Resources */,
 				B17DEF1A2709FACF003E525F /* Launch Screen.storyboard in Resources */,
 				B154AA5326D690930000DBBA /* PodcastCollectionViewCell.xib in Resources */,
 				B16B097627183038008B57FD /* GoogleService-Info.plist in Resources */,
+				B1ADB5C22749378200547E02 /* Auth.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,7 +444,7 @@
 				B11C3CF12737F01700B6AAA8 /* Date +.swift in Sources */,
 				B1A7CC9A26D13A1400A7D20B /* OnboardingSlide.swift in Sources */,
 				B1EAA40126F7464400F1D13F /* Duration.swift in Sources */,
-				B11DF90A26D11C7900FD8D10 /* ViewController.swift in Sources */,
+				B11DF90A26D11C7900FD8D10 /* OnboardingViewController.swift in Sources */,
 				B1273B3526E141CD008237EE /* WaveFormView.swift in Sources */,
 				B1D301DF27176AE200CC3643 /* SignUpViewController.swift in Sources */,
 				B14CA0F727026E5E00E8A512 /* StreamUrlResponse.swift in Sources */,
@@ -454,10 +466,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B11DF90B26D11C7900FD8D10 /* Main.storyboard */ = {
+		B12C36EB27465F9F00ED5FB2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B12507F326DCF96F00F10B2C /* Base */,
+				B12C36EC27465F9F00ED5FB2 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -469,7 +481,7 @@
 				B12507F526DCFAA900F10B2C /* uk */,
 			);
 			name = Localizable.strings;
-			path = OnboardingScreen/Localization;
+			path = romanova/Localization;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
@@ -602,9 +614,9 @@
 				CODE_SIGN_ENTITLEMENTS = romanova.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 32;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = F3T97D9JSL;
-				INFOPLIST_FILE = "$(SRCROOT)/OnboardingScreen/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/romanova/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -627,9 +639,9 @@
 				CODE_SIGN_ENTITLEMENTS = romanova.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 32;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = F3T97D9JSL;
-				INFOPLIST_FILE = "$(SRCROOT)/OnboardingScreen/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/romanova/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

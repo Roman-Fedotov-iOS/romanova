@@ -18,10 +18,12 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     
     static let identifier = String(describing: OnboardingCollectionViewCell.self)
     
+    // MARK: - Funcs
+    
     func setup(_ slide: OnboardingSlide) {
         onboardingImage.image = slide.image
         title.text = slide.title
         title.font = .rounded(ofSize: 38, weight: .bold)
-//        title.text = NSLocalizedString("screen.onboarding.page_one.title", comment: "")
+        //        title.text = NSLocalizedString("screen.onboarding.page_one.title", comment: "")
     }
 }

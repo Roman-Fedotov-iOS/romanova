@@ -44,6 +44,8 @@ class AboutViewController: UIViewController {
         exitButton.setImage(UIImage(named: UserDefaults.standard.string(forKey: "image") ?? "exitButton"), for: .normal)
     }
     
+    // MARK: - IBOutlets
+    
     func showAlert() {
         let alert = UIAlertController(title: NSLocalizedString("case.warning_label", comment: ""), message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("case.agreement_label", comment: ""), style: .default) {_ in
@@ -64,7 +66,6 @@ class AboutViewController: UIViewController {
     
     @IBAction func exitButtonAction(_ sender: UIButton) {
         player?.pause()
-        print(image)
         if UserDefaults.standard.string(forKey: "image") == "exitButton" {
             showAlert()
         } else if UserDefaults.standard.string(forKey: "image") == "loginButton" {

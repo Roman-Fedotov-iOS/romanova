@@ -28,6 +28,8 @@ class ForgotPasswordEmailViewController: UIViewController {
         refreshButton.setTitle(NSLocalizedString("screen.forgot_password_email.button.text", comment: ""), for: .normal)
     }
     
+    // MARK: - Funcs
+    
     func setupLabelTap() {
         let dismissKeyboardTap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
         self.view.addGestureRecognizer(dismissKeyboardTap)
@@ -51,7 +53,7 @@ class ForgotPasswordEmailViewController: UIViewController {
                           options: .transitionCrossDissolve,
                           animations: {
             self.emailFieldBorder.isHidden = false
-                      })
+        })
     }
     
     @IBAction func backButtonAction(_ sender: UIButton) {

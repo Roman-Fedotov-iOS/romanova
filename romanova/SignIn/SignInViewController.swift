@@ -50,6 +50,8 @@ class SignInViewController: UIViewController {
         skipButton.text = NSLocalizedString("screen.sign_in.skip_label", comment: "")
     }
     
+    // MARK: - Funcs
+    
     func showAlert() {
         let alert = UIAlertController(title: NSLocalizedString("case.exception_label", comment: ""), message: NSLocalizedString("case.incorrect_fill_label", comment: ""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -150,7 +152,7 @@ class SignInViewController: UIViewController {
                           options: .transitionCrossDissolve,
                           animations: {
             self.emailFieldBorder.isHidden = false
-                      })
+        })
     }
     
     @IBAction func passwordFieldAction(_ sender: UITextField) {
@@ -159,7 +161,7 @@ class SignInViewController: UIViewController {
                           options: .transitionCrossDissolve,
                           animations: {
             self.passwordFieldBorder.isHidden = false
-                      })
+        })
     }
     
     @IBAction func backButtonAction(_ sender: UIButton) {

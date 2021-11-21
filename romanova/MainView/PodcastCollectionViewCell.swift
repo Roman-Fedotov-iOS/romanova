@@ -25,6 +25,8 @@ class PodcastCollectionViewCell: UICollectionViewCell {
     static let identifier = String(describing: PodcastCollectionViewCell.self)
     var commentClick: () -> () = { }
     
+    // MARK: - Funcs
+    
     func setup(podcast: PodcastModel, onCellClick: @escaping (Int64) -> (), onCommentsClick: @escaping (Int64) -> (), onLikeClick: @escaping (Int64) -> ()) {
         podcastTitle.text = podcast.title
         podcastTitle.font = .rounded(ofSize: 16, weight: .bold)
@@ -47,21 +49,6 @@ class PodcastCollectionViewCell: UICollectionViewCell {
         podcastImage.isUserInteractionEnabled = true
     }
     
-    class TrackTapGesture: UITapGestureRecognizer {
-        var podcastId: Int64 = 0
-        var onClick: (Int64) -> () = {_ in }
-    }
-    
-    class CommentsTapGesture: UITapGestureRecognizer {
-        var podcastId: Int64 = 0
-        var onClick: (Int64) -> () = {_ in }
-    }
-    
-    class LikeTapGesture: UITapGestureRecognizer {
-        var podcastId: Int64 = 0
-        var onClick: (Int64) -> () = {_ in }
-    }
-    
     @objc func onCellClick(tapGesture: TrackTapGesture) {
         tapGesture.onClick(tapGesture.podcastId)
     }
@@ -77,6 +64,23 @@ class PodcastCollectionViewCell: UICollectionViewCell {
     
     func createDuration(ms: UInt) -> Duration {
         Duration(seconds: (ms/1000)%60, minutes: (ms/(1000*60))%60, hours: (ms/(1000*60*60)))
+    }
+    
+    // MARK: - Classes
+    
+    class TrackTapGesture: UITapGestureRecognizer {
+        var podcastId: Int64 = 0
+        var onClick: (Int64) -> () = {_ in }
+    }
+    
+    class CommentsTapGesture: UITapGestureRecognizer {
+        var podcastId: Int64 = 0
+        var onClick: (Int64) -> () = {_ in }
+    }
+    
+    class LikeTapGesture: UITapGestureRecognizer {
+        var podcastId: Int64 = 0
+        var onClick: (Int64) -> () = {_ in }
     }
     
     // MARK: - IBActions

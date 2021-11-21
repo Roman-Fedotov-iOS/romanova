@@ -46,20 +46,20 @@ class CommentsViewController: UIViewController {
         db.collection("comments")
             .whereField("podcastId", isEqualTo: podcastModel?.id)
             .getDocuments() { (snapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in snapshot!.documents {
-                    if var txt = self.commentTextField.text {
-                        txt = document.get("comment") as! String
-                        self.arr.insert(txt, at: 0)
-                        self.commentTableView.beginUpdates()
-                        self.commentTableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .right)
-                        self.commentTableView.endUpdates()
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in snapshot!.documents {
+                        if var txt = self.commentTextField.text {
+                            txt = document.get("comment") as! String
+                            self.arr.insert(txt, at: 0)
+                            self.commentTableView.beginUpdates()
+                            self.commentTableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .right)
+                            self.commentTableView.endUpdates()
+                        }
                     }
                 }
             }
-        }
     }
     
     // MARK: - IBActions
@@ -91,6 +91,8 @@ class CommentsViewController: UIViewController {
         }
     }
     
+    // MARK: - Funcs
+    
     func setupLabelTap() {
         let dismissKeyboardTap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
         self.view.addGestureRecognizer(dismissKeyboardTap)
@@ -114,17 +116,17 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
             .whereField("podcastId", isEqualTo: podcastModel?.id)
             .whereField("comment", isEqualTo: cell.commentLabel.text)
             .getDocuments() { (snapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in snapshot!.documents {
-                    let txt = document.get("time") as! String
-                    cell.timeLabel.text = txt
-                    let txt2 = document.get("userId") as! String
-                    cell.nameLabel.text = txt2
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in snapshot!.documents {
+                        let txt = document.get("time") as! String
+                        cell.timeLabel.text = txt
+                        let txt2 = document.get("userId") as! String
+                        cell.nameLabel.text = txt2
+                    }
                 }
             }
-        }
         return cell
     }
 }

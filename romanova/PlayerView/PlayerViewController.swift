@@ -68,7 +68,10 @@ class PlayerViewController: UIViewController {
                     self.commentsCountLabel.text = String(self.commentsCount)
                 }
             }
+        self.showAlert()
+        self.createSpinnerView()
     }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
     }
@@ -108,9 +111,10 @@ class PlayerViewController: UIViewController {
         setup()
         addPeriodicTimeObserver()
         setupTapGesture()
-        self.showAlert()
         NotificationCenter.default.addObserver(self, selector: #selector(PlayerViewController.finishAudio), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
     }
+    
+    // MARK: - Funcs
     
     @objc func finishAudio()
     {
@@ -123,7 +127,6 @@ class PlayerViewController: UIViewController {
         let streamURLRequest = StreamUrlRequest(completionHandler: { (result) in
             switch result {
             case .success(let streamResponse):
-                self.createSpinnerView()
                 if player?.isPlaying == true {
                     player?.pause()
                 }
@@ -140,7 +143,7 @@ class PlayerViewController: UIViewController {
                     }
                 } catch {}
             case .failure(let error):
-                self.createSpinnerView()
+                break
             }
         }).getStreamUrl(streamUrl: urlStr)
         setup()
@@ -301,9 +304,17 @@ class PlayerViewController: UIViewController {
     
     func showAlert() {
         if !isInternetAvailable() {
-            let alert = UIAlertController(title: NSLocalizedString("screen.main.alert.title", comment: ""), message: NSLocalizedString("screen.main.alert.description", comment: ""), preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("case.exception_label", comment: ""), message: NSLocalizedString("screen.main.alert.description", comment: ""), preferredStyle: .alert)
             let action = UIAlertAction(title: NSLocalizedString("screen.main.alert.text.button", comment: ""), style: .default, handler: { action in
-                exit(0)
+                guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                    })
+                }
             })
             alert.addAction(action)
             let screenSize: CGRect = UIScreen.main.bounds
@@ -393,7 +404,7 @@ class PlayerViewController: UIViewController {
                             }
                         }
                     }
-            } 
+            }
         } else if UserDefaults.standard.string(forKey: "image") == "loginButton" {
             let controller = (self.storyboard?.instantiateViewController(identifier: "MethodsVC")) as! MethodsViewController
             controller.modalTransitionStyle = .crossDissolve

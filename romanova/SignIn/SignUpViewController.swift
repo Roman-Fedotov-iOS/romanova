@@ -49,6 +49,8 @@ class SignUpViewController: UIViewController {
         moveToSignInButton.text = NSLocalizedString("screen.sign_up.sign_in_label", comment: "")
     }
     
+    // MARK: - Funcs
+    
     func setupLabelTap() {
         let dismissKeyboardTap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
         let toSignInTap = UITapGestureRecognizer(target: self, action: #selector(self.toSignInGesture(_:)))
@@ -88,7 +90,7 @@ class SignUpViewController: UIViewController {
                           options: .transitionCrossDissolve,
                           animations: {
             self.emailFieldBorder.isHidden = false
-                      })
+        })
     }
     
     @IBAction func passwordFieldAction(_ sender: UITextField) {
@@ -97,7 +99,7 @@ class SignUpViewController: UIViewController {
                           options: .transitionCrossDissolve,
                           animations: {
             self.passwordFieldBorder.isHidden = false
-                      })
+        })
     }
     
     @IBAction func backButtonAction(_ sender: UIButton) {

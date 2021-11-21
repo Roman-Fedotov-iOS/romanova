@@ -10,7 +10,6 @@ import UIKit
 struct Track: Decodable {
     let kind: String
     let id: Int64
-    let created_at: String
     let comment_count: UInt
     let duration: UInt
     let title: String
