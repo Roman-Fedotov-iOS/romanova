@@ -9,7 +9,7 @@ import UIKit
 
 struct PodcastModel: Equatable, Codable {
     var id: Int64
-    var duration, commentCount, likeCount: UInt
+    var duration, likeCount: UInt
     var title: String
     var largeArtworkUrl, smallArtworkUrl: String?
     var streamUrl, waveformUrl: String

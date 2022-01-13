@@ -74,6 +74,12 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxC-5N-434">
+                        <rect key="frame" x="187" y="254" width="6" height="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -85,11 +91,13 @@
                 <constraint firstAttribute="bottom" secondItem="BS7-WZ-Pym" secondAttribute="bottom" constant="10" id="CZZ-25-fBi"/>
                 <constraint firstAttribute="trailing" secondItem="5c6-ES-Yab" secondAttribute="trailing" constant="30" id="Vm8-vD-WE3"/>
                 <constraint firstItem="5mL-l5-Hfd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="WZS-fg-LZQ"/>
+                <constraint firstItem="xxC-5N-434" firstAttribute="top" secondItem="GvF-AW-N3X" secondAttribute="top" constant="19" id="X5i-4t-G90"/>
                 <constraint firstItem="sVv-g8-Vx7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Xjo-ux-5T2"/>
                 <constraint firstAttribute="bottom" secondItem="5c6-ES-Yab" secondAttribute="bottom" constant="30" id="b3f-5Z-U0e"/>
                 <constraint firstItem="5c6-ES-Yab" firstAttribute="top" secondItem="5mL-l5-Hfd" secondAttribute="bottom" constant="5" id="bZR-VW-NcH"/>
                 <constraint firstAttribute="trailing" secondItem="BS7-WZ-Pym" secondAttribute="trailing" constant="20" id="kb1-J5-b9g"/>
                 <constraint firstAttribute="bottom" secondItem="sVv-g8-Vx7" secondAttribute="bottom" id="l8I-jQ-cpR"/>
+                <constraint firstItem="GvF-AW-N3X" firstAttribute="trailing" secondItem="xxC-5N-434" secondAttribute="trailing" constant="22" id="ne7-Te-PnA"/>
                 <constraint firstItem="BS7-WZ-Pym" firstAttribute="leading" secondItem="GvF-AW-N3X" secondAttribute="trailing" constant="10" id="o0x-gG-e2b"/>
                 <constraint firstItem="5c6-ES-Yab" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="ogg-KZ-5ei"/>
                 <constraint firstItem="d4z-xa-dIj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sDw-KS-2u9"/>
@@ -102,6 +110,7 @@
                 <outlet property="commentButton" destination="BS7-WZ-Pym" id="t7x-yx-Y3N"/>
                 <outlet property="commentsCountLabel" destination="GbS-ED-X6s" id="8ok-xr-fcm"/>
                 <outlet property="likeButton" destination="GvF-AW-N3X" id="Pcz-Vd-Sgr"/>
+                <outlet property="likeCountLabel" destination="xxC-5N-434" id="lRq-7h-1zM"/>
                 <outlet property="podcastDuration" destination="5c6-ES-Yab" id="qdi-wY-sBI"/>
                 <outlet property="podcastImage" destination="d4z-xa-dIj" id="hp6-De-EzL"/>
                 <outlet property="podcastTitle" destination="5mL-l5-Hfd" id="Upw-jF-OQq"/>

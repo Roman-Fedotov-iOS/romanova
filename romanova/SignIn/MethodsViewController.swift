@@ -17,7 +17,7 @@ import CryptoKit
 
 var image: String = "exitButton"
 
-var authMethod: String = ""
+var authMethod: String? = ""
 
 class MethodsViewController: UIViewController, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
@@ -75,6 +75,8 @@ class MethodsViewController: UIViewController, ASAuthorizationControllerDelegate
             if (authResult?.user) != nil {
                 image = "loginButton"
                 UserDefaults.standard.set(image, forKey: "image")
+                authMethod = nil
+                UserDefaults.standard.set(authMethod, forKey: "authMethod")
                 let controller = self.storyboard?.instantiateViewController(identifier: "MainVC") as? MainViewController
                 controller?.modalTransitionStyle = .crossDissolve
                 controller?.modalPresentationStyle = .fullScreen
@@ -166,6 +168,7 @@ class MethodsViewController: UIViewController, ASAuthorizationControllerDelegate
                 let email = user.email ?? ""
                 let displayName = user.displayName ?? ""
                 guard let uid = Auth.auth().currentUser?.uid else { return }
+                UserDefaults.standard.set(email, forKey: "email")
                 let db = Firestore.firestore()
                 db.collection("User").document(uid).setData([
                     "email": email,
@@ -269,6 +272,7 @@ class MethodsViewController: UIViewController, ASAuthorizationControllerDelegate
                 image = "exitButton"
                 UserDefaults.standard.set(image, forKey: "image")
                 authMethod = "google"
+                UserDefaults.standard.set(authResult?.user.email, forKey: "email")
                 UserDefaults.standard.set(authMethod, forKey: "authMethod")
                 UserDefaults.standard.set(authResult?.user.uid, forKey: "idToken")
                 if let controller = self.storyboard?.instantiateViewController(identifier: "MainVC") as? MainViewController {

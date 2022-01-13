@@ -28,6 +28,16 @@
 				<string>com.googleusercontent.apps.1032331700802-iguvqrkf8rgml1lsbsi6qeu9eummbvgl</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.romanova.Deeplink</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>romanova</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>

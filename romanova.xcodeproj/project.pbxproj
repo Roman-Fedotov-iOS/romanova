@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B10822722790457800B5205F /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10822712790457800B5205F /* DeepLink.swift */; };
 		B10E855626D7BFED008A9C6F /* UIView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E855526D7BFED008A9C6F /* UIView +.swift */; };
 		B1111B8F26D40DC400E9F9E6 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1111B8E26D40DC400E9F9E6 /* AboutViewController.swift */; };
 		B114E3C426D983060067FA2A /* RequestFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114E3C326D983060067FA2A /* RequestFunc.swift */; };
@@ -34,7 +35,6 @@
 		B1A0F72426FFB8B700BF4B94 /* StreamUrlRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A0F72326FFB8B700BF4B94 /* StreamUrlRequest.swift */; };
 		B1A7CC9826D1390B00A7D20B /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A7CC9726D1390B00A7D20B /* OnboardingCollectionViewCell.swift */; };
 		B1A7CC9A26D13A1400A7D20B /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A7CC9926D13A1400A7D20B /* OnboardingSlide.swift */; };
-		B1ADB5C22749378200547E02 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1ADB5C12749378200547E02 /* Auth.storyboard */; };
 		B1B15B0026D64B20007A679B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B15AFF26D64B20007A679B /* MainViewController.swift */; };
 		B1BBE9DB26E3770100CBC09D /* InternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BBE9DA26E3770100CBC09D /* InternetConnection.swift */; };
 		B1BBE9DD26E37ED300CBC09D /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BBE9DC26E37ED300CBC09D /* ImageDownloader.swift */; };
@@ -57,6 +57,7 @@
 /* Begin PBXFileReference section */
 		57E93B345887562B9B9A01A6 /* Pods-romanova.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-romanova.release.xcconfig"; path = "Target Support Files/Pods-romanova/Pods-romanova.release.xcconfig"; sourceTree = "<group>"; };
 		ACCF9515FB6AF029834BD284 /* Pods-romanova.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-romanova.debug.xcconfig"; path = "Target Support Files/Pods-romanova/Pods-romanova.debug.xcconfig"; sourceTree = "<group>"; };
+		B10822712790457800B5205F /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
 		B10E855526D7BFED008A9C6F /* UIView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView +.swift"; path = "romanova/Extensions/UIView +.swift"; sourceTree = SOURCE_ROOT; };
 		B1111B8E26D40DC400E9F9E6 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		B114E3C326D983060067FA2A /* RequestFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestFunc.swift; path = romanova/Networking/RequestFunc.swift; sourceTree = SOURCE_ROOT; };
@@ -88,7 +89,6 @@
 		B1A7CC9726D1390B00A7D20B /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		B1A7CC9926D13A1400A7D20B /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 		B1AB018F26FE3D5900CDDE59 /* romanova.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = romanova.entitlements; sourceTree = "<group>"; };
-		B1ADB5C12749378200547E02 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		B1B15AFF26D64B20007A679B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B1BBE9DA26E3770100CBC09D /* InternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InternetConnection.swift; path = romanova/Networking/InternetConnection.swift; sourceTree = SOURCE_ROOT; };
 		B1BBE9DC26E37ED300CBC09D /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = romanova/CustomViews/ImageDownloader.swift; sourceTree = SOURCE_ROOT; };
@@ -249,7 +249,6 @@
 			isa = PBXGroup;
 			children = (
 				B12C36EB27465F9F00ED5FB2 /* Main.storyboard */,
-				B1ADB5C12749378200547E02 /* Auth.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -301,6 +300,7 @@
 				B1C095E126D9632300C5126F /* TracksModel.swift */,
 				B1EAA40026F7464400F1D13F /* Duration.swift */,
 				B14CA0F827026FA400E8A512 /* PodcastModel.swift */,
+				B10822712790457800B5205F /* DeepLink.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -371,7 +371,6 @@
 				B17DEF1A2709FACF003E525F /* Launch Screen.storyboard in Resources */,
 				B154AA5326D690930000DBBA /* PodcastCollectionViewCell.xib in Resources */,
 				B16B097627183038008B57FD /* GoogleService-Info.plist in Resources */,
-				B1ADB5C22749378200547E02 /* Auth.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +432,7 @@
 				B1C095E226D9632300C5126F /* TracksModel.swift in Sources */,
 				B12698FC26D78E8100880CF4 /* String +.swift in Sources */,
 				B1EDFA0426E27F42005561E6 /* SpinnerViewController.swift in Sources */,
+				B10822722790457800B5205F /* DeepLink.swift in Sources */,
 				B1299EC326D8E0B40034D1CD /* UserDefaults+.swift in Sources */,
 				B1BED431271F547A008D8670 /* MethodsViewController.swift in Sources */,
 				B1BBE9DD26E37ED300CBC09D /* ImageDownloader.swift in Sources */,
@@ -614,14 +614,14 @@
 				CODE_SIGN_ENTITLEMENTS = romanova.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 46;
 				DEVELOPMENT_TEAM = F3T97D9JSL;
 				INFOPLIST_FILE = "$(SRCROOT)/romanova/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.6;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tma.romanova1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -639,14 +639,14 @@
 				CODE_SIGN_ENTITLEMENTS = romanova.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 46;
 				DEVELOPMENT_TEAM = F3T97D9JSL;
 				INFOPLIST_FILE = "$(SRCROOT)/romanova/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.6;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tma.romanova1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

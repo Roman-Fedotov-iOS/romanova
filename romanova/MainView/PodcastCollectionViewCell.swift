@@ -13,6 +13,7 @@ class PodcastCollectionViewCell: UICollectionViewCell {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var commentsCountLabel: UILabel!
     @IBOutlet weak var podcastImage: UIImageView!
     @IBOutlet weak var podcastTitle: UILabel!
@@ -33,7 +34,7 @@ class PodcastCollectionViewCell: UICollectionViewCell {
         podcastDuration.text = createDuration(ms: podcast.duration).toString(isTimeInverted: isTimeInverted)
         podcastDuration.font = .rounded(ofSize: 16, weight: .regular)
         let processor = RoundCornerImageProcessor(cornerRadius: 40)
-        podcastImage.kf.setImage(with: podcast.largeArtworkUrl!.asURL!, options: [.processor(processor)])
+        podcastImage.kf.setImage(with: podcast.largeArtworkUrl!.asURL, options: [.processor(processor)])
         let tap = TrackTapGesture(target: self, action: #selector(self.onCellClick))
         let tap2 = CommentsTapGesture(target: self, action: #selector(self.onCommentsClick))
         let tap3 = LikeTapGesture(target: self, action: #selector(self.onLikeClick))

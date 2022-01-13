@@ -8,7 +8,7 @@
 import UIKit
 
 class NetworkService {
-    let urlString = "https://api-v2.soundcloud.com/playlists/1350894694?\(clientId)"
+    let urlString = "https://api-v2.soundcloud.com/users/1025550217/tracks?\(clientId)"
     
     func getTracks(urlString: String, completion: @escaping (Result<PlaylistResponse, Error>) -> Void) {
         guard let url = URL(string: urlString) else { return }
@@ -36,15 +36,15 @@ class NetworkService {
 
                 do {
                     let tracks = try JSONDecoder().decode(PlaylistResponse.self, from: data)
-                    let tracks1 = tracks.tracks.map { Track1 -> Track in
+                    let tracks1 = tracks.collection.map { Track1 -> Track in
                         var _Track1 = Track1
-                        _Track1.small_artwork_url = Track1.artwork_url.replacingOccurrences(of: "large", with: "t200x200")
-                        _Track1.large_artwork_url = Track1.artwork_url.replacingOccurrences(of: "large", with: "t500x500")
-                        _Track1.waveform_url = Track1.waveform_url.replacingOccurrences(of: "json", with: "png")
+                        _Track1.small_artwork_url = Track1.artwork_url?.replacingOccurrences(of: "large", with: "t200x200")
+                        _Track1.large_artwork_url = Track1.artwork_url?.replacingOccurrences(of: "large", with: "t500x500")
+                        _Track1.waveform_url = Track1.waveform_url?.replacingOccurrences(of: "json", with: "png")
                         return _Track1
                     }
                     
-                    completion(.success(PlaylistResponse(tracks: tracks1, title: tracks.title)))
+                    completion(.success(PlaylistResponse(collection: tracks1)))
                     
                 } catch let jsonError {
                     print("Status code was \(httpResponse.statusCode), but expected 2xx")

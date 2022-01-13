@@ -14,7 +14,7 @@ import FirebaseFirestore
 // MARK: - Properties
 
 var player: AVQueuePlayer? = nil
-let clientId = "xwrCAMrX4rtC78f7OgEM1A4mk0Ipk6ED"
+let clientId = "c291bmRjbG91ZDp1c2Vyczo1NDY3OTE3NjA"
 var currentPodcastModel: PodcastModel? = nil
 var timeObserverToken: Any?
 var playerItem: AVPlayerItem?
@@ -25,6 +25,7 @@ class PlayerViewController: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var likesCountLabel: UILabel!
     @IBOutlet weak var commentsCountLabel: UILabel!
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -40,6 +41,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var next15Button: UIButton!
     @IBOutlet weak var waveForm: WaveFormView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var shareButton: UIButton!
     
     // MARK: - Properties
     
@@ -47,11 +49,12 @@ class PlayerViewController: UIViewController {
     var playlistResponse: PlaylistResponse? = nil
     var podcastModel: PodcastModel? = nil
     let child = SpinnerViewController()
-    var likeImage: String = "emptyLike"
+    var likeImage: String = "emptyLikeBlack"
     let db = Firestore.firestore()
     var ru = ""
     var uk = ""
     var commentsCount: Int = 0
+    var likesCount: Int = 0
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -68,8 +71,19 @@ class PlayerViewController: UIViewController {
                     self.commentsCountLabel.text = String(self.commentsCount)
                 }
             }
+        db.collection("likes")
+            .whereField("podcastId", isEqualTo: currentPodcastModel?.id)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        self.likesCount = querySnapshot!.documents.count
+                    }
+                    self.likesCountLabel.text = String(self.likesCount)
+                }
+            }
         self.showAlert()
-        self.createSpinnerView()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -188,11 +202,11 @@ class PlayerViewController: UIViewController {
                     print("Error getting documents: \(err)")
                 } else {
                     if querySnapshot?.documents.isEmpty == false {
-                        UserDefaults.standard.set("pressedLike", forKey: "likeImage")
-                        self.likeButton.setImage(UIImage(named: UserDefaults.standard.string(forKey: "likeImage")!), for: .normal)
+                        self.likesCountLabel.textColor = .white
+                        self.likeButton.setImage(UIImage(named: "pressedLikeBlack"), for: .normal)
                     } else {
-                        UserDefaults.standard.set("emptyLike", forKey: "likeImage")
-                        self.likeButton.setImage(UIImage(named: UserDefaults.standard.string(forKey: "likeImage")!), for: .normal)
+                        self.likesCountLabel.textColor = .black
+                        self.likeButton.setImage(UIImage(named: "emptyLikeBlack"), for: .normal)
                     }
                 }
             }
@@ -352,16 +366,17 @@ class PlayerViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func backButtonAction(_ sender: UIButton) {
-        if let controller = storyboard?.instantiateViewController(identifier: "MainVC") as? MainViewController {
-            controller.modalTransitionStyle = .crossDissolve
-            controller.modalPresentationStyle = .fullScreen
-            present(controller, animated: true, completion: nil)
-        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func likeButtonAction(_ sender: UIButton) {
-        if UserDefaults.standard.string(forKey: "image") == "exitButton" {
-            let docRef = db.collection("likes").document("\(Date().millisecondsSince1970)")
+        if UserDefaults.standard.string(forKey: "authMethod") == nil {
+            let controller = (self.storyboard?.instantiateViewController(identifier: "MethodsVC")) as! MethodsViewController
+            controller.modalTransitionStyle = .crossDissolve
+            controller.modalPresentationStyle = .fullScreen
+            self.present(controller, animated: true, completion: nil)
+        } else {
+            let docRef = self.db.collection("likes").document("\(Date().millisecondsSince1970)")
             docRef.setData([
                 "userId": UserDefaults.standard.string(forKey: "idToken"),
                 "podcastId": currentPodcastModel!.id
@@ -373,7 +388,7 @@ class PlayerViewController: UIViewController {
                     print("Document successfully written!")
                 }
             }
-            db.collection("likes")
+            self.db.collection("likes")
                 .whereField("userId", isEqualTo: UserDefaults.standard.string(forKey: "idToken"))
                 .whereField("podcastId", isEqualTo: currentPodcastModel!.id)
                 .getDocuments() { (querySnapshot, err) in
@@ -381,16 +396,28 @@ class PlayerViewController: UIViewController {
                         print("Error getting documents: \(err)")
                     } else {
                         if querySnapshot?.documents.isEmpty == false {
-                            UserDefaults.standard.set("pressedLike", forKey: "likeImage")
-                            self.likeButton.setImage(UIImage(named: UserDefaults.standard.string(forKey: "likeImage")!), for: .normal)
+                            self.db.collection("likes")
+                                .whereField("podcastId", isEqualTo: currentPodcastModel!.id)
+                                .getDocuments() { (querySnapshot, err) in
+                                    if let err = err {
+                                        print("Error getting documents: \(err)")
+                                    } else {
+                                        for document in querySnapshot!.documents {
+                                            self.likesCount = querySnapshot!.documents.count
+                                            self.likesCountLabel.text = String(self.likesCount)
+                                        }
+                                    }
+                                }
+                            self.likesCountLabel.textColor = .white
+                            self.likeButton.setImage(UIImage(named: "pressedLikeBlack"), for: .normal)
                         } else {
-                            UserDefaults.standard.set("emptyLike", forKey: "likeImage")
-                            self.likeButton.setImage(UIImage(named: UserDefaults.standard.string(forKey: "likeImage")!), for: .normal)
+                            self.likesCountLabel.textColor = .black
+                            self.likeButton.setImage(UIImage(named: "emptyLikeBlack"), for: .normal)
                         }
                     }
                 }
-            if UserDefaults.standard.string(forKey: "likeImage") == "pressedLike" {
-                db.collection("likes")
+            if likeButton.image(for: .normal) == UIImage(named: "pressedLikeBlack") {
+                self.db.collection("likes")
                     .whereField("userId", isEqualTo: UserDefaults.standard.string(forKey: "idToken"))
                     .whereField("podcastId", isEqualTo: currentPodcastModel!.id)
                     .getDocuments() { (querySnapshot, err) in
@@ -399,17 +426,24 @@ class PlayerViewController: UIViewController {
                         } else {
                             for document in querySnapshot!.documents {
                                 document.reference.delete()
-                                self.likeButton.setImage(UIImage(named: "emptyLike"), for: .normal)
-                                UserDefaults.standard.set("emptyLike", forKey: "likeImage")
+                                self.db.collection("likes")
+                                    .whereField("podcastId", isEqualTo: currentPodcastModel!.id)
+                                    .getDocuments() { (querySnapshot, err) in
+                                        if let err = err {
+                                            print("Error getting documents: \(err)")
+                                        } else {
+                                            for document in querySnapshot!.documents {
+                                                self.likesCount = querySnapshot!.documents.count
+                                                self.likesCountLabel.text = String(self.likesCount)
+                                            }
+                                        }
+                                    }
+                                self.likesCountLabel.textColor = .black
+                                self.likeButton.setImage(UIImage(named: "emptyLikeBlack"), for: .normal)
                             }
                         }
                     }
             }
-        } else if UserDefaults.standard.string(forKey: "image") == "loginButton" {
-            let controller = (self.storyboard?.instantiateViewController(identifier: "MethodsVC")) as! MethodsViewController
-            controller.modalTransitionStyle = .crossDissolve
-            controller.modalPresentationStyle = .fullScreen
-            self.present(controller, animated: true, completion: nil)
         }
     }
     
@@ -466,11 +500,11 @@ class PlayerViewController: UIViewController {
                     print("Error getting documents: \(err)")
                 } else {
                     if querySnapshot?.documents.isEmpty == false {
-                        UserDefaults.standard.set("pressedLike", forKey: "likeImage")
-                        self.likeButton.setImage(UIImage(named: UserDefaults.standard.string(forKey: "likeImage")!), for: .normal)
+                        self.likesCountLabel.textColor = .white
+                        self.likeButton.setImage(UIImage(named: "pressedLikeBlack"), for: .normal)
                     } else {
-                        UserDefaults.standard.set("emptyLike", forKey: "likeImage")
-                        self.likeButton.setImage(UIImage(named: UserDefaults.standard.string(forKey: "likeImage")!), for: .normal)
+                        self.likesCountLabel.textColor = .black
+                        self.likeButton.setImage(UIImage(named: "emptyLikeBlack"), for: .normal)
                     }
                 }
             }
@@ -508,11 +542,11 @@ class PlayerViewController: UIViewController {
                     print("Error getting documents: \(err)")
                 } else {
                     if querySnapshot?.documents.isEmpty == false {
-                        UserDefaults.standard.set("pressedLike", forKey: "likeImage")
-                        self.likeButton.setImage(UIImage(named: UserDefaults.standard.string(forKey: "likeImage")!), for: .normal)
+                        self.likesCountLabel.textColor = .white
+                        self.likeButton.setImage(UIImage(named: "pressedLikeBlack"), for: .normal)
                     } else {
-                        UserDefaults.standard.set("emptyLike", forKey: "likeImage")
-                        self.likeButton.setImage(UIImage(named: UserDefaults.standard.string(forKey: "likeImage")!), for: .normal)
+                        self.likesCountLabel.textColor = .black
+                        self.likeButton.setImage(UIImage(named: "emptyLikeBlack"), for: .normal)
                     }
                 }
             }
@@ -528,8 +562,9 @@ class PlayerViewController: UIViewController {
             player!.seek(to: time)
         }
     }
+    
     @IBAction func commentButton(_ sender: UIButton) {
-        if UserDefaults.standard.string(forKey: "image") == "loginButton" {
+        if UserDefaults.standard.string(forKey: "authMethod") == nil {
             let controller = (self.storyboard?.instantiateViewController(identifier: "MethodsVC")) as! MethodsViewController
             controller.modalTransitionStyle = .crossDissolve
             controller.modalPresentationStyle = .fullScreen
@@ -541,5 +576,22 @@ class PlayerViewController: UIViewController {
             controller.modalPresentationStyle = .fullScreen
             self.present(controller, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func shareButtonAction(_ sender: UIButton) {
+//        let podcastId = currentPodcastModel?.id
+//        let controller = (self.storyboard?.instantiateViewController(identifier: "PlayerVC")) as! PlayerViewController
+//        controller.podcasts = self.podcasts
+//        controller.podcastModel = self.podcasts.first(where: { Podcast in
+//            Int64(Podcast.id) == podcastId
+//        })
+//        controller.modalTransitionStyle = .crossDissolve
+//        controller.modalPresentationStyle = .fullScreen
+//        self.present(controller, animated: true, completion: nil)
+        
+        let message = [URL(string: "romanova://podcasts/\(String(describing: currentPodcastModel!.id))")!]
+        print(currentPodcastModel?.id)
+        let ac = UIActivityViewController(activityItems: message, applicationActivities: nil)
+        present(ac, animated: true)
     }
 }

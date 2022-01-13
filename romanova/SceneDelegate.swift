@@ -21,14 +21,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         var controller: UIViewController!
         
-        if UserDefaults.standard.hasOnboarded {
+        if UserDefaults.standard.hasOnboarded == true {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             controller = storyboard.instantiateViewController(identifier: "MethodsVC")
         } else {
             controller = OnboardingViewController.instantiate()
         }
         
-        if UserDefaults.standard.hasSignedIn {
+        if UserDefaults.standard.string(forKey: "authMethod") != nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             controller = storyboard.instantiateViewController(identifier: "MainVC")
         }

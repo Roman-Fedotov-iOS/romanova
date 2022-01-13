@@ -7,16 +7,20 @@
 
 import UIKit
 import FirebaseFirestore
+import IQKeyboardManagerSwift
 
-class CommentsViewController: UIViewController {
+class CommentsViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var grayView: UIView!
+    @IBOutlet weak var blackView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var commentTableView: UITableView!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var bottonViewBottomConstraint: NSLayoutConstraint!
     
     // MARK: - Properties
     
@@ -39,6 +43,7 @@ class CommentsViewController: UIViewController {
         setupLabelTap()
         self.commentTableView.estimatedRowHeight = 250
         self.commentTableView.rowHeight = UITableView.automaticDimension
+        commentTextField.delegate = self
         titleLabel.text = NSLocalizedString("screen.comments.title", comment: "")
         titleLabel.font = .rounded(ofSize: 18, weight: .bold)
         sendButton.setTitle(NSLocalizedString("screen.comments.send_button.text", comment: ""), for: .normal)
@@ -60,6 +65,18 @@ class CommentsViewController: UIViewController {
                     }
                 }
             }
+        
+        IQKeyboardManager.shared.enable = false
+        //Subscribe to a Notification which will fire before the keyboard will show
+        subscribeToNotification(UIResponder.keyboardWillShowNotification, selector: #selector(keyboardWillShowOrHide))
+        
+        //Subscribe to a Notification which will fire before the keyboard will hide
+        subscribeToNotification(UIResponder.keyboardWillHideNotification, selector: #selector(keyboardWillShowOrHide))
+    }
+    
+    deinit {
+        unsubscribeFromAllNotifications()
+
     }
     
     // MARK: - IBActions
@@ -78,7 +95,7 @@ class CommentsViewController: UIViewController {
             let hour = calendar.component(.hour, from: date)
             let minutes = calendar.component(.minute, from: date)
             db.collection("comments").document("\(Date().millisecondsSince1970)").setData([
-                "userId": UserDefaults.standard.string(forKey: "idToken"),
+                "userId": UserDefaults.standard.string(forKey: "email"),
                 "podcastId": podcastModel?.id,
                 "comment": txt,
                 "time": "\(String(hour))" + ":" + "\(String(minutes))"
@@ -89,6 +106,8 @@ class CommentsViewController: UIViewController {
                 }
             }
         }
+        commentTextField.text?.removeAll()
+        UIApplication.shared.sendAction(#selector(UIApplication.resignFirstResponder), to: nil, from: nil, for: nil);
     }
     
     // MARK: - Funcs
@@ -100,6 +119,34 @@ class CommentsViewController: UIViewController {
     
     @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
+    }
+    
+    func subscribeToNotification(_ notification: NSNotification.Name, selector: Selector) {
+        NotificationCenter.default.addObserver(self, selector: selector, name: notification, object: nil)
+    }
+        
+    func unsubscribeFromAllNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+        
+    @objc func keyboardWillShowOrHide(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
+            return
+        }
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            UIView.animate(withDuration: 0.7, delay: 0.1, options: .curveEaseInOut) { [weak self] in
+                self?.bottonViewBottomConstraint.constant = 0.0
+            }
+        }
+        
+        if notification.name == UIResponder.keyboardWillShowNotification {
+            print(self.view.frame.origin.y)
+            UIView.animate(withDuration: 0.7, delay: 0.1, options: .curveEaseIn) { [weak self] in
+                self?.bottonViewBottomConstraint.constant = keyboardScreenEndFrame.height
+            }
+        }
     }
 }
 

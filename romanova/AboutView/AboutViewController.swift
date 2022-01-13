@@ -66,9 +66,9 @@ class AboutViewController: UIViewController {
     
     @IBAction func exitButtonAction(_ sender: UIButton) {
         player?.pause()
-        if UserDefaults.standard.string(forKey: "image") == "exitButton" {
+        if UserDefaults.standard.string(forKey: "authMethod") != nil {
             showAlert()
-        } else if UserDefaults.standard.string(forKey: "image") == "loginButton" {
+        } else if UserDefaults.standard.string(forKey: "authMethod") == nil {
             try! Auth.auth().signOut()
             UserDefaults.standard.hasSignedIn = false
             

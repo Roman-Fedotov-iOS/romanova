@@ -31,11 +31,12 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var newUserLabel: UILabel!
     @IBOutlet weak var moveToSignInButton: UILabel!
     
-    var isPasswordHidden: Bool = false
+    var isPasswordHidden: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabelTap()
+        passwordField.isSecureTextEntry = true
         emailFieldBorder.isHidden = true
         passwordFieldBorder.isHidden = true
         emailField.delegate = self
@@ -82,6 +83,19 @@ class SignUpViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    func showUserAlert() {
+        let alert = UIAlertController(title: NSLocalizedString("case.exception_label", comment: ""), message: NSLocalizedString("case.existing_user_label", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true)
+    }
+    
+    func showEmailAlert() {
+        let alert = UIAlertController(title: NSLocalizedString("case.exception_label", comment: ""), message: NSLocalizedString("case.invalid_email_label", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true)
+    }
+    
+    
     // MARK: - IBActions
     
     @IBAction func emailFieldAction(_ sender: UITextField) {
@@ -107,12 +121,14 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func hidePasswordButtonAction(_ sender: UIButton) {
-        if(isPasswordHidden == true) {
+        isPasswordHidden = !isPasswordHidden
+        if passwordField.isSecureTextEntry == true {
+            hidePasswordButton.setImage(UIImage(named: "seenPassword"), for: .normal)
             passwordField.isSecureTextEntry = false
-        } else {
+        } else if isPasswordHidden == false {
+            hidePasswordButton.setImage(UIImage(named: "hiddenPassword"), for: .normal)
             passwordField.isSecureTextEntry = true
         }
-        isPasswordHidden = !isPasswordHidden
     }
     
     @IBAction func signUpButtonAction(_ sender: UIButton) {
@@ -122,9 +138,13 @@ class SignUpViewController: UIViewController {
         if (!email.isEmpty && !password.isEmpty) {
             Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
                 if error == nil {
-                    if let result = result {
+                    if ((self.emailField.text?.isValidEmail()) != nil), let result = result {
                         image = "exitButton"
                         UserDefaults.standard.set(image, forKey: "image")
+                        authMethod = "email"
+                        UserDefaults.standard.set(result.user.email, forKey: "email")
+                        UserDefaults.standard.set(authMethod, forKey: "authMethod")
+                        UserDefaults.standard.set(result.user.uid, forKey: "idToken")
                         if let controller = self.storyboard?.instantiateViewController(identifier: "MainVC") as? MainViewController {
                             controller.modalTransitionStyle = .crossDissolve
                             controller.modalPresentationStyle = .fullScreen
@@ -132,7 +152,13 @@ class SignUpViewController: UIViewController {
                         }
                     }
                 } else if error != nil {
-                    self.showPasswordAlert()
+                    if self.passwordField.text!.count < 6 {
+                        self.showPasswordAlert()
+                    } else if self.emailField.text?.isValidEmail() == false {
+                        self.showEmailAlert()
+                    } else {
+                        self.showUserAlert()
+                    }
                 }
             }
         } else {
@@ -154,11 +180,23 @@ extension SignUpViewController: UITextFieldDelegate {
                     if let result = result {
                         image = "exitButton"
                         UserDefaults.standard.set(image, forKey: "image")
+                        authMethod = "email"
+                        UserDefaults.standard.set(result.user.email, forKey: "email")
+                        UserDefaults.standard.set(authMethod, forKey: "authMethod")
+                        UserDefaults.standard.set(result.user.uid, forKey: "idToken")
                         if let controller = self.storyboard?.instantiateViewController(identifier: "MainVC") as? MainViewController {
                             controller.modalTransitionStyle = .crossDissolve
                             controller.modalPresentationStyle = .fullScreen
                             self.present(controller, animated: true, completion: nil)
                         }
+                    }
+                } else if error != nil {
+                    if self.passwordField.text!.count < 6 {
+                        self.showPasswordAlert()
+                    } else if self.emailField.text?.isValidEmail() == false {
+                        self.showEmailAlert()
+                    } else {
+                        self.showUserAlert()
                     }
                 }
             }

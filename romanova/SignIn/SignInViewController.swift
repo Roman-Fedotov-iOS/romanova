@@ -14,6 +14,7 @@ class SignInViewController: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var hidePasswordButton: UIButton!
     @IBOutlet weak var emailGrayView: UIView!
     @IBOutlet weak var passwordGrayView: UIView!
     @IBOutlet weak var backButton: UIButton!
@@ -28,8 +29,11 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var moveToSignUpButton: UILabel!
     @IBOutlet weak var skipButton: UILabel!
     
+    var isPasswordHidden: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordField.isSecureTextEntry = true
         emailFieldBorder.isHidden = true
         passwordFieldBorder.isHidden = true
         createSpinnerView()
@@ -133,6 +137,8 @@ class SignInViewController: UIViewController {
             if (authResult?.user) != nil {
                 image = "loginButton"
                 UserDefaults.standard.set(image, forKey: "image")
+                authMethod = nil
+                UserDefaults.standard.set(authMethod, forKey: "authMethod")
                 let controller = self.storyboard?.instantiateViewController(identifier: "MainVC") as? MainViewController
                 controller?.modalTransitionStyle = .crossDissolve
                 controller?.modalPresentationStyle = .fullScreen
@@ -146,6 +152,16 @@ class SignInViewController: UIViewController {
     
     // MARK: - IBActions
     
+    @IBAction func hidePasswordButtonAction(_ sender: UIButton) {
+        isPasswordHidden = !isPasswordHidden
+        if passwordField.isSecureTextEntry == true {
+            hidePasswordButton.setImage(UIImage(named: "seenPassword"), for: .normal)
+            passwordField.isSecureTextEntry = false
+        } else if isPasswordHidden == false {
+            hidePasswordButton.setImage(UIImage(named: "hiddenPassword"), for: .normal)
+            passwordField.isSecureTextEntry = true
+        }
+    }
     @IBAction func emailFieldAction(_ sender: UITextField) {
         emailGrayView.isHidden = true
         UIView.transition(with: emailFieldBorder, duration: 0.1,
@@ -183,6 +199,7 @@ class SignInViewController: UIViewController {
                         image = "exitButton"
                         UserDefaults.standard.set(image, forKey: "image")
                         authMethod = "email"
+                        UserDefaults.standard.set(result.user.email, forKey: "email")
                         UserDefaults.standard.set(authMethod, forKey: "authMethod")
                         UserDefaults.standard.set(result.user.uid, forKey: "idToken")
                         if let controller = self.storyboard?.instantiateViewController(identifier: "MainVC") as? MainViewController {
@@ -216,6 +233,7 @@ extension SignInViewController: UITextFieldDelegate {
                         image = "exitButton"
                         UserDefaults.standard.set(image, forKey: "image")
                         authMethod = "email"
+                        UserDefaults.standard.set(result.user.email, forKey: "email")
                         UserDefaults.standard.set(authMethod, forKey: "authMethod")
                         UserDefaults.standard.set(result.user.uid, forKey: "idToken")
                         if let controller = self.storyboard?.instantiateViewController(identifier: "MainVC") as? MainViewController {

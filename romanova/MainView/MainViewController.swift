@@ -33,16 +33,19 @@ class MainViewController: UIViewController {
     let child = SpinnerViewController()
     let db = Firestore.firestore()
     var commentsCount: Int = 0
+    var likesCount: Int = 0
     
     override func viewWillAppear(_ animated: Bool) {
         if player?.isPlaying == true {
             playButton.setImage(UIImage(named: "pause"), for: .normal)
         }
-        createSpinnerView()
+        showAlert()
+        self.podcastCollectionView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createSpinnerView()
         registerCells()
         fetchPodcasts()
         podcastBottomView.dropShadow()
@@ -98,23 +101,22 @@ class MainViewController: UIViewController {
     }
     
     private func fetchPodcasts(retryCount: Int = 3) {
-        let urlString = "https://api-v2.soundcloud.com/playlists/1350894694?\(clientId)"
+        let urlString = "https://api-v2.soundcloud.com/users/1025550217/tracks?\(clientId)"
         
         networkService.getTracks(urlString: urlString) { (result) in
             switch result {
             case .success(let trackResponse):
-                trackResponse.tracks.reversed().forEach {
+                trackResponse.collection.forEach {
                     self.podcasts.append(PodcastModel(id: $0.id,
-                                                      duration: $0.duration,
-                                                      commentCount: $0.comment_count,
-                                                      likeCount: $0.likes_count,
-                                                      title: $0.title,
-                                                      largeArtworkUrl: $0.large_artwork_url!,
-                                                      smallArtworkUrl: $0.small_artwork_url!,
-                                                      streamUrl: $0.media.transcodings.first(where: { transcoding in
+                                                      duration: $0.duration ?? 123,
+                                                      likeCount: $0.likes_count ?? 1,
+                                                      title: $0.title ?? "",
+                                                      largeArtworkUrl: $0.large_artwork_url ?? "",
+                                                      smallArtworkUrl: $0.small_artwork_url ?? "",
+                                                      streamUrl: $0.media?.transcodings.first(where: { transcoding in
                         transcoding.format.protocol == "progressive"
-                    })!.url,
-                                                      waveformUrl: $0.waveform_url))
+                    })!.url ?? "",
+                                                      waveformUrl: $0.waveform_url ?? ""))
                 }
                 self.podcastCollectionView.reloadData()
             case .failure(let error):
@@ -222,7 +224,6 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        showAlert()
         return podcasts.count
     }
     
@@ -238,7 +239,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             controller.modalPresentationStyle = .fullScreen
             self.present(controller, animated: true, completion: nil)
         }, onCommentsClick: { podcastId in
-            if UserDefaults.standard.string(forKey: "image") == "loginButton" {
+            if UserDefaults.standard.string(forKey: "authMethod") == nil {
                 let controller = (self.storyboard?.instantiateViewController(identifier: "MethodsVC")) as! MethodsViewController
                 controller.modalTransitionStyle = .crossDissolve
                 controller.modalPresentationStyle = .fullScreen
@@ -254,7 +255,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 self.present(controller, animated: true, completion: nil)
             }
         }, onLikeClick: { podcastId in
-            if UserDefaults.standard.string(forKey: "image") == "loginButton" {
+            if UserDefaults.standard.string(forKey: "authMethod") == nil {
                 let controller = (self.storyboard?.instantiateViewController(identifier: "MethodsVC")) as! MethodsViewController
                 controller.modalTransitionStyle = .crossDissolve
                 controller.modalPresentationStyle = .fullScreen
@@ -280,6 +281,19 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                             print("Error getting documents: \(err)")
                         } else {
                             if querySnapshot?.documents.isEmpty == false {
+                                self.db.collection("likes")
+                                    .whereField("podcastId", isEqualTo: self.podcasts[indexPath.row].id)
+                                    .getDocuments() { (querySnapshot, err) in
+                                        if let err = err {
+                                            print("Error getting documents: \(err)")
+                                        } else {
+                                            for document in querySnapshot!.documents {
+                                                self.likesCount = querySnapshot!.documents.count
+                                                cell.likeCountLabel.text = String(self.likesCount)
+                                            }
+                                        }
+                                    }
+                                cell.likeCountLabel.textColor = .black
                                 UserDefaults.standard.set("pressedLike", forKey: "likeImage")
                                 cell.likeButton.setImage(UIImage(named: UserDefaults.standard.string(forKey: "likeImage")!), for: .normal)
                             } else {
@@ -288,7 +302,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                             }
                         }
                     }
-                if UserDefaults.standard.string(forKey: "likeImage") == "pressedLike" {
+                if cell.likeButton.image(for: .normal) == UIImage(named: "pressedLike") {
                     self.db.collection("likes")
                         .whereField("userId", isEqualTo: UserDefaults.standard.string(forKey: "idToken"))
                         .whereField("podcastId", isEqualTo: podcastId)
@@ -298,6 +312,19 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                             } else {
                                 for document in querySnapshot!.documents {
                                     document.reference.delete()
+                                    self.db.collection("likes")
+                                        .whereField("podcastId", isEqualTo: self.podcasts[indexPath.row].id)
+                                        .getDocuments() { (querySnapshot, err) in
+                                            if let err = err {
+                                                print("Error getting documents: \(err)")
+                                            } else {
+                                                for document in querySnapshot!.documents {
+                                                    self.likesCount = querySnapshot!.documents.count
+                                                    cell.likeCountLabel.text = String(self.likesCount)
+                                                }
+                                            }
+                                        }
+                                    cell.likeCountLabel.textColor = .white
                                     cell.likeButton.setImage(UIImage(named: "emptyLike"), for: .normal)
                                     UserDefaults.standard.set("emptyLike", forKey: "likeImage")
                                 }
@@ -314,6 +341,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     print("Error getting documents: \(err)")
                 } else {
                     if querySnapshot?.documents.isEmpty == false {
+                        cell.likeCountLabel.textColor = .black
                         UserDefaults.standard.set("pressedLike", forKey: "likeImage")
                         cell.likeButton.setImage(UIImage(named: UserDefaults.standard.string(forKey: "likeImage")!), for: .normal)
                     } else {
@@ -331,6 +359,18 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                     for document in querySnapshot!.documents {
                         self.commentsCount = querySnapshot!.documents.count
                         cell.commentsCountLabel.text = String(self.commentsCount)
+                    }
+                }
+            }
+        self.db.collection("likes")
+            .whereField("podcastId", isEqualTo: podcasts[indexPath.row].id)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        self.likesCount = querySnapshot!.documents.count
+                        cell.likeCountLabel.text = String(self.likesCount)
                     }
                 }
             }
