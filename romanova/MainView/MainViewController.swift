@@ -59,6 +59,8 @@ class MainViewController: UIViewController {
         
         let gestureToAboutScreen = UITapGestureRecognizer(target: self, action:  #selector(self.toAboutAction(sender:)))
         self.topView.addGestureRecognizer(gestureToAboutScreen)
+        let gestureToPlayerScreen = UITapGestureRecognizer(target: self, action: #selector(self.toPlayerAction(sender:)))
+        self.podcastBottomView.addGestureRecognizer(gestureToPlayerScreen)
         
         NotificationCenter.default.addObserver(self, selector: #selector(didGetNotification(_:)), name: Notification.Name("text"), object: nil)
         
@@ -136,6 +138,17 @@ class MainViewController: UIViewController {
             controller.modalPresentationStyle = .fullScreen
             present(controller, animated: true, completion: nil)
         }
+    }
+    
+    @objc func toPlayerAction(sender : UITapGestureRecognizer) {
+        let controller = (self.storyboard?.instantiateViewController(identifier: "PlayerVC")) as! PlayerViewController
+        controller.podcasts = self.podcasts
+        controller.podcastModel = self.podcasts.first(where: { Podcast in
+            Int64(Podcast.id) == currentPodcastModel?.id
+        })
+        controller.modalTransitionStyle = .crossDissolve
+        controller.modalPresentationStyle = .fullScreen
+        self.present(controller, animated: true, completion: nil)
     }
     
     func initPlayer() {
@@ -294,11 +307,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                                         }
                                     }
                                 cell.likeCountLabel.textColor = .black
-                                UserDefaults.standard.set("pressedLike", forKey: "likeImage")
-                                cell.likeButton.setImage(UIImage(named: UserDefaults.standard.string(forKey: "likeImage")!), for: .normal)
+                                cell.likeButton.setImage(UIImage(named: "pressedLike"), for: .normal)
                             } else {
-                                UserDefaults.standard.set("emptyLike", forKey: "likeImage")
-                                cell.likeButton.setImage(UIImage(named: UserDefaults.standard.string(forKey: "likeImage")!), for: .normal)
+                                cell.likeCountLabel.textColor = .white
+                                cell.likeButton.setImage(UIImage(named: "emptyLike"), for: .normal)
                             }
                         }
                     }
@@ -312,21 +324,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                             } else {
                                 for document in querySnapshot!.documents {
                                     document.reference.delete()
-                                    self.db.collection("likes")
-                                        .whereField("podcastId", isEqualTo: self.podcasts[indexPath.row].id)
-                                        .getDocuments() { (querySnapshot, err) in
-                                            if let err = err {
-                                                print("Error getting documents: \(err)")
-                                            } else {
-                                                for document in querySnapshot!.documents {
-                                                    self.likesCount = querySnapshot!.documents.count
-                                                    cell.likeCountLabel.text = String(self.likesCount)
-                                                }
-                                            }
-                                        }
+                                    self.likesCount = querySnapshot!.documents.count - 2
+                                    cell.likeCountLabel.text = String(self.likesCount)
                                     cell.likeCountLabel.textColor = .white
                                     cell.likeButton.setImage(UIImage(named: "emptyLike"), for: .normal)
-                                    UserDefaults.standard.set("emptyLike", forKey: "likeImage")
                                 }
                             }
                         }
@@ -342,11 +343,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 } else {
                     if querySnapshot?.documents.isEmpty == false {
                         cell.likeCountLabel.textColor = .black
-                        UserDefaults.standard.set("pressedLike", forKey: "likeImage")
-                        cell.likeButton.setImage(UIImage(named: UserDefaults.standard.string(forKey: "likeImage")!), for: .normal)
+                        cell.likeButton.setImage(UIImage(named: "pressedLike"), for: .normal)
                     } else {
-                        UserDefaults.standard.set("emptyLike", forKey: "likeImage")
-                        cell.likeButton.setImage(UIImage(named: UserDefaults.standard.string(forKey: "likeImage")!), for: .normal)
+                        cell.likeCountLabel.textColor = .white
+                        cell.likeButton.setImage(UIImage(named: "emptyLike"), for: .normal)
                     }
                 }
             }

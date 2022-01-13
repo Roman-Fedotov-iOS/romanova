@@ -126,6 +126,7 @@ class PlayerViewController: UIViewController {
         addPeriodicTimeObserver()
         setupTapGesture()
         NotificationCenter.default.addObserver(self, selector: #selector(PlayerViewController.finishAudio), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+        shareButton.isHidden = true
     }
     
     // MARK: - Funcs
@@ -263,12 +264,10 @@ class PlayerViewController: UIViewController {
         if let percentToSeek = Double?(Double(100 * point.x / waveForm.frame.width)) {
             let secToSeek: CMTime = CMTimeMake(value: Int64((percentToSeek / 100) * duration), timescale: 1)
             let secToSeek1 = createDuration(ms: UInt(((percentToSeek / 100) * duration)) * 1000).toString(isTimeInverted: isTimeInverted)
-            player?.pause()
             podcastDuration.text = secToSeek1
             waveForm.updateProgress(currentPosition: (percentToSeek / 100) * duration)
             if sender.state == .ended {
                 player!.seek(to: secToSeek)
-                player?.play()
             }
         }
     }
@@ -426,18 +425,8 @@ class PlayerViewController: UIViewController {
                         } else {
                             for document in querySnapshot!.documents {
                                 document.reference.delete()
-                                self.db.collection("likes")
-                                    .whereField("podcastId", isEqualTo: currentPodcastModel!.id)
-                                    .getDocuments() { (querySnapshot, err) in
-                                        if let err = err {
-                                            print("Error getting documents: \(err)")
-                                        } else {
-                                            for document in querySnapshot!.documents {
-                                                self.likesCount = querySnapshot!.documents.count
-                                                self.likesCountLabel.text = String(self.likesCount)
-                                            }
-                                        }
-                                    }
+                                self.likesCount = querySnapshot!.documents.count - 2
+                                self.likesCountLabel.text = String(self.likesCount)
                                 self.likesCountLabel.textColor = .black
                                 self.likeButton.setImage(UIImage(named: "emptyLikeBlack"), for: .normal)
                             }
@@ -579,18 +568,7 @@ class PlayerViewController: UIViewController {
     }
     
     @IBAction func shareButtonAction(_ sender: UIButton) {
-//        let podcastId = currentPodcastModel?.id
-//        let controller = (self.storyboard?.instantiateViewController(identifier: "PlayerVC")) as! PlayerViewController
-//        controller.podcasts = self.podcasts
-//        controller.podcastModel = self.podcasts.first(where: { Podcast in
-//            Int64(Podcast.id) == podcastId
-//        })
-//        controller.modalTransitionStyle = .crossDissolve
-//        controller.modalPresentationStyle = .fullScreen
-//        self.present(controller, animated: true, completion: nil)
-        
         let message = [URL(string: "romanova://podcasts/\(String(describing: currentPodcastModel!.id))")!]
-        print(currentPodcastModel?.id)
         let ac = UIActivityViewController(activityItems: message, applicationActivities: nil)
         present(ac, animated: true)
     }

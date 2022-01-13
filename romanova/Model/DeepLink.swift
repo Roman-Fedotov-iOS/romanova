@@ -21,7 +21,7 @@ class DeepLinkManager {
     private var deepLink: DeepLink?
    // check existing deepling and perform action
     func checkDeepLink() {
-       guard var deeplinkType = deepLink else {
+       guard let deeplinkType = deepLink else {
           return
        }
      
@@ -46,7 +46,7 @@ class DeeplinkNavigator {
           print("1")
        case .podcasts(.details(id: let id)):
            if id == "1164740752" {
-               print("8")
+               print("1")
            }
        }
    }
