@@ -126,7 +126,7 @@ class PlayerViewController: UIViewController {
         addPeriodicTimeObserver()
         setupTapGesture()
         NotificationCenter.default.addObserver(self, selector: #selector(PlayerViewController.finishAudio), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
-        shareButton.isHidden = true
+//        shareButton.isHidden = true
     }
     
     // MARK: - Funcs
