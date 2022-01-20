@@ -14,6 +14,7 @@ pod 'Firebase/Auth'
 pod 'GoogleSignIn'
 pod 'Firebase/Core'
 pod 'Firebase/Database'
+pod 'Firebase/DynamicLinks'
 pod 'Firebase/Firestore'
 pod 'IQKeyboardManagerSwift'
 end

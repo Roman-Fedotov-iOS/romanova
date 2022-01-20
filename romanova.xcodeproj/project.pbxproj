@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B10822722790457800B5205F /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10822712790457800B5205F /* DeepLink.swift */; };
 		B10E855626D7BFED008A9C6F /* UIView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10E855526D7BFED008A9C6F /* UIView +.swift */; };
 		B1111B8F26D40DC400E9F9E6 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1111B8E26D40DC400E9F9E6 /* AboutViewController.swift */; };
 		B114E3C426D983060067FA2A /* RequestFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B114E3C326D983060067FA2A /* RequestFunc.swift */; };
@@ -57,7 +56,6 @@
 /* Begin PBXFileReference section */
 		57E93B345887562B9B9A01A6 /* Pods-romanova.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-romanova.release.xcconfig"; path = "Target Support Files/Pods-romanova/Pods-romanova.release.xcconfig"; sourceTree = "<group>"; };
 		ACCF9515FB6AF029834BD284 /* Pods-romanova.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-romanova.debug.xcconfig"; path = "Target Support Files/Pods-romanova/Pods-romanova.debug.xcconfig"; sourceTree = "<group>"; };
-		B10822712790457800B5205F /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
 		B10E855526D7BFED008A9C6F /* UIView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIView +.swift"; path = "romanova/Extensions/UIView +.swift"; sourceTree = SOURCE_ROOT; };
 		B1111B8E26D40DC400E9F9E6 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		B114E3C326D983060067FA2A /* RequestFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestFunc.swift; path = romanova/Networking/RequestFunc.swift; sourceTree = SOURCE_ROOT; };
@@ -300,7 +298,6 @@
 				B1C095E126D9632300C5126F /* TracksModel.swift */,
 				B1EAA40026F7464400F1D13F /* Duration.swift */,
 				B14CA0F827026FA400E8A512 /* PodcastModel.swift */,
-				B10822712790457800B5205F /* DeepLink.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -432,7 +429,6 @@
 				B1C095E226D9632300C5126F /* TracksModel.swift in Sources */,
 				B12698FC26D78E8100880CF4 /* String +.swift in Sources */,
 				B1EDFA0426E27F42005561E6 /* SpinnerViewController.swift in Sources */,
-				B10822722790457800B5205F /* DeepLink.swift in Sources */,
 				B1299EC326D8E0B40034D1CD /* UserDefaults+.swift in Sources */,
 				B1BED431271F547A008D8670 /* MethodsViewController.swift in Sources */,
 				B1BBE9DD26E37ED300CBC09D /* ImageDownloader.swift in Sources */,

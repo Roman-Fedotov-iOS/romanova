@@ -10,6 +10,7 @@ import AVKit
 import Kingfisher
 import Firebase
 import FirebaseFirestore
+import FirebaseDynamicLinks
 
 // MARK: - Properties
 
@@ -350,6 +351,13 @@ class PlayerViewController: UIViewController {
         }
     }
     
+    
+    func showShareSheet(url: String) {
+        let promoText = "\(currentPodcastModel?.title ?? "")"
+        let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
+    }
+    
     func setupWaveform(url: String) {
         ImageDownloaderImpl(url: url).download { ImageDownloaderResult in
             if ImageDownloaderResult.hasError {
@@ -568,8 +576,42 @@ class PlayerViewController: UIViewController {
     }
     
     @IBAction func shareButtonAction(_ sender: UIButton) {
-        let message = [URL(string: "romanova://podcasts/\(String(describing: currentPodcastModel!.id))")!]
-        let ac = UIActivityViewController(activityItems: message, applicationActivities: nil)
-        present(ac, animated: true)
+        guard let podcast = self.podcastModel else { return }
+//        let linkParam = URL(string: "https://romanova.com/podcasts?podcastid=\(currentPodcastModel?.id)")
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "romanova.com"
+        components.path = "/podcasts"
+        
+        let podcastIDQueryItem = URLQueryItem(name: "podcastid", value: String(currentPodcastModel!.id))
+        components.queryItems = [podcastIDQueryItem]
+        
+        guard let linkParam = components.url else { return }
+        print(linkParam.absoluteString)
+        
+        guard let shareLink = DynamicLinkComponents.init(link: linkParam, domainURIPrefix: "https://romanovapodcasts.page.link") else { return }
+        if let myBundle = Bundle.main.bundleIdentifier {
+            shareLink.iOSParameters = DynamicLinkIOSParameters(bundleID: myBundle)
+        }
+        shareLink.iOSParameters?.appStoreID = "1587390788"
+        shareLink.androidParameters = DynamicLinkAndroidParameters(packageName: "com.tma.romanova")
+        
+        guard let longURL = shareLink.url else { return }
+        print(longURL.absoluteString)
+        
+        shareLink.shorten { (url, warnings, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            if let warnings = warnings {
+                for warning in warnings {
+                    print(warning)
+                }
+            }
+            guard let url = url else { return }
+            print(linkParam.absoluteString)
+            self.showShareSheet(url: linkParam.absoluteString.replacingOccurrences(of: "//romanova.com", with: "//romanovapodcasts.page.link"))
+        }
     }
 }

@@ -362,6 +362,9 @@ PODS:
   - Firebase/Database (8.9.1):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 8.9.0)
+  - Firebase/DynamicLinks (8.9.1):
+    - Firebase/CoreOnly
+    - FirebaseDynamicLinks (~> 8.9.0)
   - Firebase/Firestore (8.9.1):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 8.9.1)
@@ -400,6 +403,8 @@ PODS:
   - FirebaseDatabase (8.9.0):
     - FirebaseCore (~> 8.0)
     - leveldb-library (~> 1.22)
+  - FirebaseDynamicLinks (8.9.0):
+    - FirebaseCore (~> 8.0)
   - FirebaseFirestore (8.9.1):
     - abseil/algorithm (= 0.20200225.0)
     - abseil/base (= 0.20200225.0)
@@ -509,6 +514,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Firebase/DynamicLinks
   - Firebase/Firestore
   - GoogleSignIn
   - IQKeyboardManagerSwift
@@ -526,6 +532,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseDatabase
+    - FirebaseDynamicLinks
     - FirebaseFirestore
     - FirebaseInstallations
     - GoogleAppMeasurement
@@ -553,6 +560,7 @@ SPEC CHECKSUMS:
   FirebaseCore: c5aab092d9c4b8efea894946166b04c9d9ef0e68
   FirebaseCoreDiagnostics: 5daa63f1c1409d981a2d5007daa100b36eac6a34
   FirebaseDatabase: 2236b804cf0cac165b4620669bedf7ee643a2bcc
+  FirebaseDynamicLinks: 50980cbe21d2bbe8374afcdccd94dc2db20dffca
   FirebaseFirestore: 15ae9648476436efed698a909e44c4737498f9b4
   FirebaseInstallations: caa7c8e0d3e2345b8829d2fa9ca1b4dfbf2fcc85
   GoogleAppMeasurement: 837649ad3987936c232f6717c5680216f6243d24
@@ -570,6 +578,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   VIMediaCache: aa650f82cb114c68a343beb4e67416cf5eb2f3a2
 
-PODFILE CHECKSUM: 94f6b08ee7624ba06bb79c3169b6d6b80541fb73
+PODFILE CHECKSUM: f8d5040f8616b0445cd543507e44d119e91f3581
 
 COCOAPODS: 1.11.2

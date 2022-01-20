@@ -32,10 +32,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.romanova.Deeplink</string>
+			<string>podcast</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>romanova</string>
+				<string>com.tma.romanova1</string>
 			</array>
 		</dict>
 	</array>
