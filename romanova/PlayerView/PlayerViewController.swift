@@ -610,8 +610,23 @@ class PlayerViewController: UIViewController {
                 }
             }
             guard let url = url else { return }
-            print(linkParam.absoluteString)
-            self.showShareSheet(url: linkParam.absoluteString.replacingOccurrences(of: "//romanova.com", with: "//romanovapodcasts.page.link"))
+            if currentPodcastModel?.id == 1164740470 {
+                self.showShareSheet(url: "https://romanovapodcasts.page.link/podcasts")
+            } else if currentPodcastModel?.id == 1164740485 {
+                self.showShareSheet(url: "https://romanovapodcasts.page.link/podcast2")
+            } else if currentPodcastModel?.id == 1164740509 {
+                self.showShareSheet(url: "https://romanovapodcasts.page.link/podcast3")
+            } else if currentPodcastModel?.id == 1164740530 {
+                self.showShareSheet(url: "https://romanovapodcasts.page.link/podcast4")
+            } else if currentPodcastModel?.id == 1164740575 {
+                self.showShareSheet(url: "https://romanovapodcasts.page.link/podcast5")
+            } else if currentPodcastModel?.id == 1164740638 {
+                self.showShareSheet(url: "https://romanovapodcasts.page.link/podcast6")
+            } else if currentPodcastModel?.id == 1164740665 {
+                self.showShareSheet(url: "https://romanovapodcasts.page.link/podcast7")
+            } else if currentPodcastModel?.id == 1164740752 {
+                self.showShareSheet(url: "https://romanovapodcasts.page.link/podcast8")
+            }
         }
     }
 }

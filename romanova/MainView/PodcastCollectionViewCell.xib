@@ -55,7 +55,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GvF-AW-N3X" userLabel="Like Button">
-                        <rect key="frame" x="165" y="235" width="50" height="50"/>
+                        <rect key="frame" x="180" y="235" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="50" id="qIf-gb-Cyh"/>
                             <constraint firstAttribute="width" constant="50" id="qql-4q-GHN"/>
@@ -75,7 +75,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxC-5N-434">
-                        <rect key="frame" x="187" y="254" width="6" height="10"/>
+                        <rect key="frame" x="202" y="254" width="6" height="10"/>
                         <fontDescription key="fontDescription" type="system" pointSize="8"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -98,7 +98,7 @@
                 <constraint firstAttribute="trailing" secondItem="BS7-WZ-Pym" secondAttribute="trailing" constant="20" id="kb1-J5-b9g"/>
                 <constraint firstAttribute="bottom" secondItem="sVv-g8-Vx7" secondAttribute="bottom" id="l8I-jQ-cpR"/>
                 <constraint firstItem="GvF-AW-N3X" firstAttribute="trailing" secondItem="xxC-5N-434" secondAttribute="trailing" constant="22" id="ne7-Te-PnA"/>
-                <constraint firstItem="BS7-WZ-Pym" firstAttribute="leading" secondItem="GvF-AW-N3X" secondAttribute="trailing" constant="10" id="o0x-gG-e2b"/>
+                <constraint firstItem="BS7-WZ-Pym" firstAttribute="leading" secondItem="GvF-AW-N3X" secondAttribute="trailing" constant="-5" id="o0x-gG-e2b"/>
                 <constraint firstItem="5c6-ES-Yab" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="ogg-KZ-5ei"/>
                 <constraint firstItem="d4z-xa-dIj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sDw-KS-2u9"/>
                 <constraint firstAttribute="bottom" secondItem="GvF-AW-N3X" secondAttribute="bottom" constant="10" id="tet-fZ-Vuz"/>

@@ -17,4 +17,5 @@ pod 'Firebase/Database'
 pod 'Firebase/DynamicLinks'
 pod 'Firebase/Firestore'
 pod 'IQKeyboardManagerSwift'
+pod 'Firebase/Messaging'
 end
